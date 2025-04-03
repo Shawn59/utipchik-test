@@ -1,0 +1,157 @@
+@import "varibles";
+// для view
+%view-main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+%view-header-container {
+  display: flex;
+  height: 88px;
+  align-items: center;
+}
+
+%view-pagination-container {
+  display: flex;
+  align-items: center;
+  padding: 24px 32px;
+  border-top: 1px solid $colorGrey_050;
+  justify-content: space-between;
+}
+
+%input-title-blue {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+  color: $colorBlue_900;
+}
+
+%input-title-grey {
+  font-size: 14px;
+  line-height: 24px;
+  color: $colorDeepGrey_300;
+}
+
+%delete-grey-btn {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border-radius: 4px;
+  background: #F0F1F4;
+  margin-left: 24px;
+
+  &:hover {
+    background: #E1E2E8;
+  }
+}
+
+//для цветов
+%warning-text {
+  color: $colorRed_900;
+}
+
+%warning-block {
+  padding: 8px;
+  background: #ff664745;
+}
+
+%table-cells-active {
+  p, a {
+    &.name-cell-active {
+      color: $colorBlue_900;
+      cursor: pointer;
+    }
+
+    &.not-active {
+      color: $colorDeepGrey_300;
+    }
+  }
+}
+
+%status {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  overflow: hidden;
+
+  &.calculating {
+    p {
+      color: $colorOrange_600;
+      font-family: $fontMedium;
+    }
+  }
+
+  &.sent {
+    p {
+      color: $colorGreen_500;
+      font-family: $fontMedium;
+    }
+  }
+
+  &.error {
+    p {
+      color: $colorRed_900;
+      font-family: $fontMedium;
+    }
+  }
+
+  &.canceled {
+    p {
+      color: $colorDeepGrey_700;
+      font-family: $fontMedium;
+    }
+  }
+}
+
+%statusBubble {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  overflow: hidden;
+
+  p {
+    padding: 0 8px;
+    border-radius: 4px;
+    font-family: $fontMedium;
+  }
+
+  &.calculating {
+    p {
+      background: $colorOrange_100;
+    }
+  }
+
+  &.sent {
+    p {
+      background: $colorGreen_100;
+    }
+  }
+
+  &.error {
+    p {
+      background: $colorRed_100;
+    }
+  }
+
+  &.canceled {
+    p {
+      background: #F6F6F6;
+    }
+  }
+}
+
+%changeBtnContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .total {
+    margin-right: 8px;
+
+    span {
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,221 @@
+@import "src/styles/varibles";
+
+.nav-menu-container {
+  display: flex;
+  width: max-content;
+  height: max-content;
+
+  //общие стили для меню
+  .MuiDrawer-paper {
+    background: $colorDeepBlack_900;
+
+    .MuiList-root {
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .list-item {
+      display: flex;
+      cursor: pointer;
+      height: 44px;
+      padding: 0;
+
+      .MuiButton-startIcon {
+        margin: 0 16px 0 0;
+      }
+
+      .MuiButton-endIcon {
+        margin-left: auto;
+        margin-right: 0;
+      }
+
+      .list-item-btn {
+        width: 100%;
+        height: 100%;
+        justify-content: flex-start;
+        padding: 0 16px;
+        font-size: 14px;
+
+        .item-label-btn {
+          font-family: $fontRegular;
+          text-transform: none;
+          color: $colorWhite;
+        }
+      }
+
+      &.selected {
+        border-left: 4px solid $colorPink_900;
+
+        &.item-sub-menu {
+          .item-sub-menu-btn {
+            padding-left: 12px;
+          }
+        }
+
+        .list-item-btn {
+          padding-left: 12px;
+        }
+      }
+
+      &.item-sub-menu {
+        padding: 0;
+
+        .item-sub-menu-btn {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          color: $colorWhite;
+          margin: 0;
+          padding: 0 16px;
+          font-size: 14px;
+        }
+      }
+
+      &:hover {
+        background: $colorDeepBlack_800;
+      }
+
+      .item-text {
+        color: $colorWhite;
+        font-family: $fontRegular;
+      }
+    }
+  }
+
+  //стили для развернутной менюшки
+  .drawer-open {
+    width: 272px;
+
+    @media (max-width: 1439.89px) {
+      width: 92px;
+    }
+
+    .MuiDrawer-paper {
+      width: 272px;
+      transition: width 225ms;
+      overflow: hidden;
+
+      .item-icon {
+        fill: $colorDeepGrey_900;
+      }
+
+      .item-text {
+        display: flex;
+        margin-left: 16px;
+      }
+    }
+  }
+
+  // стили для свернутой менюшки
+  .drawer-close {
+    width: 92px;
+
+    .MuiDrawer-paper {
+      width: 92px;
+      transition: width 225ms;
+      overflow: hidden;
+
+      .list-item {
+        justify-content: center;
+
+        .item-icon {
+          fill: $colorWhite;
+        }
+
+        .item-text {
+          display: none;
+        }
+
+        .item-sub-menu-btn {
+          justify-content: center;
+          .MuiButton-startIcon {
+            margin: 0;
+          }
+        }
+      }
+
+      .fio-container {
+        justify-content: center;
+        margin: 0;
+        height: 100%;
+      }
+    }
+  }
+
+  .MuiDivider-root {
+    border-color: $colorDeepBlack_800;
+    margin: 0 16px;
+  }
+
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 64px;
+    padding: 0 16px;
+
+    &.align-center {
+      justify-content: center
+    }
+  }
+
+  .menu-footer {
+    height: 106px;
+    border-top: 1px solid #35384C;
+    margin: auto 16px 0 16px;
+
+    .fio-container {
+      font-size: 14px;
+      line-height: 18px;
+      color: $colorWhite;
+      margin: 22px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .fio {
+        width: 172px;
+        color: $colorWhite;
+
+        &.hidden {
+          display: none;
+        }
+      }
+
+      .email {
+        font-size: 12px;
+        margin-top: 2px;
+        color: $colorDeepGrey_900;
+      }
+
+      .version {
+        font-size: 12px;
+        color: $colorDeepGrey_900;
+      }
+    }
+  }
+
+  .arrow {
+    width: 24px;
+    height: 24px;
+    background: $colorDeepBlack_800;
+    border-radius: 4px;
+
+    &:hover {
+      background: $colorDeepBlack_800;
+    }
+
+    &.arrow-left {
+      transform: rotate(180deg)
+    }
+
+    svg {
+      fill: $colorDeepBlack_300;
+      font-size: 14px;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+}
