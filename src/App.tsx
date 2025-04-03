@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
-import './App.scss';
+import './styles/main.scss';
 import { ButtonAtom } from '@atoms';
 import { StyledEngineProvider } from '@mui/material';
+import { MainLayout } from './layouts/MainLayout';
 
-function App() {
+function App(props) {
   const [count, setCount] = useState(0);
 
   return (
@@ -13,7 +14,9 @@ function App() {
       {/*понижаем приоритет дефолтных стилей MUI*/}
       <StyledEngineProvider injectFirst>
         <ButtonAtom />
-        <div>
+
+        <MainLayout {...props} />
+        {/* <div>
           <a href="https://vite.dev" target="_blank">
             <img src={viteLogo} className="logo" alt="Vite logo" />
           </a>
@@ -28,7 +31,7 @@ function App() {
             Edit <code>src/App.tsx</code> and save to test HMR
           </p>
         </div>
-        <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+        <p className="read-the-docs">Click on the Vite and React logos to learn more</p>*/}
       </StyledEngineProvider>
     </>
   );

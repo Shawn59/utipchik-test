@@ -24,7 +24,7 @@
 
     "baseUrl": ".",
     "paths": { // Дубли алиасов вебпака
-      "@atoms": ["src/_atoms/index"],
+      "@atoms": ["src/_atoms"],
       "@molecules": ["src/_molecules"],
       "@components": ["src/_components"],
       "@hooks": ["src/hooks"],
@@ -34,7 +34,8 @@
       "@svgIcons": ["src/svgIcons"],
       "@api": ["src/backend/API/"],
       "@constants": ["src/constants/"]
-    }
+    },
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "src"

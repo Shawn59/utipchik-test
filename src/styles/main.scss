@@ -1,4 +1,4 @@
-@import 'varibles';
+@use 'varibles' as *;
 
 html, body {
   min-width: 320px;

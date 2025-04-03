@@ -1,4 +1,4 @@
-@import "varibles";
+@use "varibles" as *;
 // для view
 %view-main-container {
   display: flex;

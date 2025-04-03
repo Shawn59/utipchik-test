@@ -1,4 +1,4 @@
-@import "src/styles/varibles";
+@use "src/styles/index" as *;
 
 .nav-menu-container {
   display: flex;
