@@ -4,42 +4,4 @@
     { "path": "./tsconfig.app.json"},
     { "path": "./tsconfig.node.json"}
   ],
-  "paths": { // Дубли алиасов вебпака
-    "@atoms": [
-      "src/_atoms"
-    ],
-    "@molecules": [
-      "src/_molecules"
-    ],
-    "@components": [
-      "src/_components"
-    ],
-    "@views": [
-      "src/views"
-    ],
-    "@utils": [
-      "src/utils"
-    ],
-    "@services": [
-      "src/services"
-    ],
-    "@api": [
-      "src/api"
-    ],
-    "@svg": [
-      "src/_svg"
-    ],
-    "@layouts": [
-      "src/layouts"
-    ],
-    "@interfaces": [
-      "src/interfaces"
-    ],
-    "@constants": [
-      "src/constants"
-    ],
-    "@hooks": [
-      "src/hooks"
-    ]
-  }
 }

@@ -20,7 +20,21 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "baseUrl": ".",
+    "paths": { // Дубли алиасов вебпака
+      "@atoms": ["src/_atoms/index"],
+      "@molecules": ["src/_molecules"],
+      "@components": ["src/_components"],
+      "@hooks": ["src/hooks"],
+      "@helpers": ["src/helpers"],
+      "@views": ["src/views"],
+      "@services": ["src/services"],
+      "@svgIcons": ["src/svgIcons"],
+      "@api": ["src/backend/API/"],
+      "@constants": ["src/constants/"]
+    }
   },
   "include": [
     "src"
