@@ -5,8 +5,8 @@ export const MainLayout = (props) => {
 
   return (
     <div>
-      <NavMenuComp />
-
+      {/*  <NavMenuComp />*/}
+      sdf
       <>{children}</>
     </div>
   );
