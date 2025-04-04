@@ -1,3 +1,3 @@
-export const UsersView = () => {
-  return <div>{'UsersView'}</div>;
+export const ReportsView = () => {
+  return <div>{'ReportsView'}</div>;
 };

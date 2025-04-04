@@ -1,3 +1,3 @@
 export const ContentBaseView = () => {
-  return <div>{'контент бэйз'}</div>;
+  return <div>{'ContentBaseView'}</div>;
 };

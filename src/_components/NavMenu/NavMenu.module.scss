@@ -1,42 +1,69 @@
 @use "src/styles/index" as *;
 
-.nav-menu-container {
+.navMenuContainer {
   display: flex;
   width: max-content;
   height: max-content;
 
   //общие стили для меню
-  .MuiDrawer-paper {
+  :global(.MuiDrawer-paper) {
     background: $colorDeepBlack_900;
 
-    .MuiList-root {
+    :global(.MuiList-root) {
       overflow-y: auto;
       overflow-x: hidden;
+
+      /* Общие стили для скроллбара */
+      &::-webkit-scrollbar {
+        width: 4px; /* Ширина вертикального скроллбара */
+      }
+
+      /* Стили для бегунка (thumb) */
+      &::-webkit-scrollbar-thumb {
+        background: $colorDeepBlack_700; /* Цвет бегунка */
+        border-radius: 32px; /* Скругление углов */
+      }
+
+      /* Стили для бегунка при наведении */
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: #555; /* Цвет бегунка при наведении */
+      }
+
+      /* Стили для дорожки (track) */
+      &::-webkit-scrollbar-track {
+       // background: linear-gradient(270deg, #717479 0%, #D0D6DF 0%, rgba(112.86, 116.12, 121, 0.80) 49%, #E2E5EB 97%); /* Цвет дорожки */
+        border-radius: 16px; /* Скругление углов */
+       // border: 2px solid white;
+      }
     }
 
-    .list-item {
+    .listItem {
       display: flex;
       cursor: pointer;
       height: 44px;
       padding: 0;
 
-      .MuiButton-startIcon {
+      :global(.MuiButton-startIcon) {
         margin: 0 16px 0 0;
       }
 
-      .MuiButton-endIcon {
+      :global(.MuiButton-endIcon) {
         margin-left: auto;
         margin-right: 0;
       }
 
-      .list-item-btn {
+      .listItemBtn {
         width: 100%;
         height: 100%;
         justify-content: flex-start;
         padding: 0 16px;
         font-size: 14px;
 
-        .item-label-btn {
+        &:focus {
+          outline: none;
+        }
+
+        .itemLabelBtn {
           font-family: $fontRegular;
           text-transform: none;
           color: $colorWhite;
@@ -44,23 +71,17 @@
       }
 
       &.selected {
-        border-left: 4px solid $colorPink_900;
+        border-left: 4px solid $colorRed_900;
 
-        &.item-sub-menu {
-          .item-sub-menu-btn {
-            padding-left: 12px;
-          }
-        }
-
-        .list-item-btn {
+        .listItemBtn {
           padding-left: 12px;
         }
       }
 
-      &.item-sub-menu {
+      &.itemSubMenu {
         padding: 0;
 
-        .item-sub-menu-btn {
+        .itemSubMenuBtn {
           width: 100%;
           height: 100%;
           display: flex;
@@ -75,7 +96,7 @@
         background: $colorDeepBlack_800;
       }
 
-      .item-text {
+      .itemText {
         color: $colorWhite;
         font-family: $fontRegular;
       }
@@ -83,23 +104,23 @@
   }
 
   //стили для развернутной менюшки
-  .drawer-open {
+  .drawerOpen {
     width: 272px;
 
     @media (max-width: 1439.89px) {
       width: 92px;
     }
 
-    .MuiDrawer-paper {
+    :global(.MuiDrawer-paper) {
       width: 272px;
       transition: width 225ms;
       overflow: hidden;
 
-      .item-icon {
+      .itemIcon {
         fill: $colorDeepGrey_900;
       }
 
-      .item-text {
+      .itemText {
         display: flex;
         margin-left: 16px;
       }
@@ -107,97 +128,60 @@
   }
 
   // стили для свернутой менюшки
-  .drawer-close {
+  .drawerClose {
     width: 92px;
 
-    .MuiDrawer-paper {
+    :global(.MuiDrawer-paper) {
       width: 92px;
       transition: width 225ms;
       overflow: hidden;
 
-      .list-item {
+      .listItem {
         justify-content: center;
 
-        .item-icon {
+        .itemIcon {
           fill: $colorWhite;
         }
 
-        .item-text {
+        .itemText {
           display: none;
         }
 
-        .item-sub-menu-btn {
+        .itemSubMenuBtn {
           justify-content: center;
-          .MuiButton-startIcon {
+
+          :global(.MuiButton-startIcon) {
             margin: 0;
           }
         }
       }
-
-      .fio-container {
-        justify-content: center;
-        margin: 0;
-        height: 100%;
-      }
     }
   }
 
-  .MuiDivider-root {
+  :global(.MuiDivider-root) {
     border-color: $colorDeepBlack_800;
     margin: 0 16px;
   }
 
-  .menu-header {
+  .menuHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
     min-height: 64px;
     padding: 0 16px;
 
-    &.align-center {
+    &.alignCenter {
       justify-content: center
     }
-  }
 
-  .menu-footer {
-    height: 106px;
-    border-top: 1px solid #35384C;
-    margin: auto 16px 0 16px;
-
-    .fio-container {
-      font-size: 14px;
-      line-height: 18px;
-      color: $colorWhite;
-      margin: 22px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .fio {
-        width: 172px;
-        color: $colorWhite;
-
-        &.hidden {
-          display: none;
-        }
-      }
-
-      .email {
-        font-size: 12px;
-        margin-top: 2px;
-        color: $colorDeepGrey_900;
-      }
-
-      .version {
-        font-size: 12px;
-        color: $colorDeepGrey_900;
-      }
+    .logo {
+      height: 40px;
     }
   }
 
   .arrow {
-    width: 24px;
-    height: 24px;
+    width: 34px;
+    height: 34px;
     background: $colorDeepBlack_800;
     border-radius: 4px;
 
@@ -205,7 +189,7 @@
       background: $colorDeepBlack_800;
     }
 
-    &.arrow-left {
+    &.arrowLeft {
       transform: rotate(180deg)
     }
 

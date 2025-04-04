@@ -1,3 +1,3 @@
-export const MediaPlansView = () => {
-  return <div>{'MediaPlansView'}</div>;
+export const LiveBroadcastView = () => {
+  return <div>{'LiveBroadcastView'}</div>;
 };

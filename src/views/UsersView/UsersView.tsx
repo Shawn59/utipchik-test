@@ -1,3 +1,3 @@
-export const LiveBroadcastView = () => {
-  return <div>{'LiveBroadcastView'}</div>;
+export const UsersView = () => {
+  return <div>{'UsersView'}</div>;
 };

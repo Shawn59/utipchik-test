@@ -1,0 +1,20 @@
+@use 'src/styles/index' as s;
+
+.mainLayout {
+  display: flex;
+
+  .page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: s.$colorGrey_000;
+    flex: 1;
+    height: 100dvh;
+
+    .content {
+      padding: 32px;
+      background: s.$colorWhite;
+      border-radius: 16px;
+    }
+  }
+}

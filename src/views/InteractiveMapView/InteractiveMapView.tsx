@@ -1,3 +1,3 @@
-export const EmergencyInformationView = () => {
-  return <div>{'EmergencyInformationView'}</div>;
+export const InteractiveMapView = () => {
+  return <div>{'InteractiveMapView'}</div>;
 };

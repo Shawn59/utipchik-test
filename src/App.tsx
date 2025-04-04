@@ -4,19 +4,19 @@ import viteLogo from '/vite.svg';
 import './styles/main.scss';
 import { ButtonAtom } from '@atoms';
 import { StyledEngineProvider } from '@mui/material';
-import { MainLayout } from './layouts/MainLayout';
+import { MainLayout } from './layouts/MainLayout/MainLayout';
+import { BrowserRouter } from 'react-router-dom';
 
 function App(props) {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       {/*понижаем приоритет дефолтных стилей MUI*/}
       <StyledEngineProvider injectFirst>
-        <ButtonAtom />
+        <BrowserRouter>
+          <MainLayout {...props} />
+        </BrowserRouter>
 
-        <MainLayout {...props} />
-        {/* <div>
+        {/*      <div>
           <a href="https://vite.dev" target="_blank">
             <img src={viteLogo} className="logo" alt="Vite logo" />
           </a>
