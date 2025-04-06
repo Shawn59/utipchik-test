@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "tsc -b & vite",
     "build": "tsc -b && vite build",
     "lint": "eslint scheduler_epip",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build-and-preview": "tsc -b && vite build & vite preview"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
