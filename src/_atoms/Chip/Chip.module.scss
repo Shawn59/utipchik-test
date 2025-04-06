@@ -1,0 +1,90 @@
+@use "src/styles/index" as *;
+
+.chipAtomContainer {
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  :global(.MuiChip-root) {
+    padding: 8px 16px;
+    border-radius: 26px;
+    height: auto;
+
+    :global(.MuiChip-label) {
+      font-family: $fontMedium;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
+      padding: 0;
+    }
+
+    :global(.MuiTouchRipple-root) {
+      display: none;
+    }
+
+    :global(.MuiChip-deleteIcon) {
+      margin: 0 0 0 6px;
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      min-height: 24px;
+    }
+  }
+
+
+  &.Primary {
+    :global(.MuiChip-root) {
+      background: $colorBlue_600;
+      color: $colorWhite;
+
+      &:hover {
+        background: $colorRed_200;
+      }
+
+      &:active {
+        box-shadow: none;
+      }
+
+      &.selected {
+        background: $colorBlue_900;
+      }
+
+      &:global(.Mui-disabled) {
+        opacity: 0.25;
+      }
+    }
+  }
+
+  &.Outlined {
+    :global(.MuiChip-root) {
+      border: 1px solid $colorBlue_900;
+      background: transparent;
+
+      :global(.MuiChip-label) {
+        color: $colorBlue_900;
+      }
+
+      &:hover {
+        background: $colorBlue_100;
+      }
+
+      &:active {
+        box-shadow: none;
+      }
+
+      &.selected {
+        background: $colorBlue_900;
+        color: $colorWhite;
+
+        :global(.MuiChip-label) {
+          color: $colorWhite;
+        }
+      }
+
+      &:global(.Mui-disabled) {
+        opacity: 0.25;
+      }
+    }
+  }
+}

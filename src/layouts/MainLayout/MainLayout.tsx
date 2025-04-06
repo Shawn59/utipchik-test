@@ -1,10 +1,9 @@
 import { HeaderComp, NavMenuComp } from '@components';
 import styles from './MainLayout.module.scss';
 import { AppRouters } from '../../routes/routes';
+import {observer} from "mobx-react-lite";
 
-export const MainLayout = (props) => {
-  const { children } = props;
-
+export const MainLayout = observer(() => {
   return (
     <div className={styles.mainLayout}>
       <NavMenuComp />
@@ -18,4 +17,4 @@ export const MainLayout = (props) => {
       </div>
     </div>
   );
-};
+});
