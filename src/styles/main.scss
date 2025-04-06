@@ -1,0 +1,48 @@
+@use 'varibles' as *;
+
+html, body {
+  min-width: 320px;
+  line-height: 1.67;
+  font-size: 14px;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: $fontRegular;
+  src: local($fontRegular),
+  url(/src/styles/fonts/SF-Pro-Display-Regular.OTF);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: $fontMedium;
+  src: local($fontMedium),
+  url(/src/styles/fonts/SF-Pro-Display-Medium.OTF);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: $fontBold;
+  src: local($fontBold),
+  url(/src/styles/fonts/SF-Pro-Display-Bold.OTF);
+  font-display: swap;
+}
+
+
+// шрифт по умолчанию
+* {
+  font-family: $fontRegular;
+  color: $colorDarkTurquoise_900;
+}
+
+// Правка элемента вставки ссылки CKEditor5
+.ck-balloon-panel {
+  z-index: 9999 !important;
+}
+
+.MuiInputLabel-root {
+  font-family: $fontRegular;
+}
