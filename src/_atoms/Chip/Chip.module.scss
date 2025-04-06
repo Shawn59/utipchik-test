@@ -1,0 +1,65 @@
+@use "src/styles/index" as *;
+
+.chipAtomContainer {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  :global(.MuiChip-root) {
+    padding: 8px 16px;
+    border-radius: 26px;
+    height: auto;
+
+    :global(.MuiChip-label) {
+      font-family: $fontMedium;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 24px;
+      color: $colorGreen_500;
+      padding: 0;
+    }
+
+    :global(.MuiTouchRipple-root) {
+      display: none;
+    }
+
+    :global(.MuiChip-deleteIcon) {
+      margin: 0 0 0 6px;
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      min-height: 24px;
+    }
+  }
+
+
+  &.Filled {
+    :global(.MuiChip-root) {
+      background: $element-grey-E4E8F6;
+
+      &:hover {
+        background: $element-purple_D8DEF2;
+      }
+
+      &:active {
+        box-shadow: none;
+      }
+
+      &.selected {
+        background: $accent-txt-icn;
+
+        :global(.MuiChip-label) {
+          color: $element-white-FEFDFF;
+        }
+
+        svg {
+          fill: $element-white-FEFDFF;
+        }
+      }
+
+      &:global(.Mui-disabled) {
+        opacity: 0.25;
+      }
+    }
+  }
+}
