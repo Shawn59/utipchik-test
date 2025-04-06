@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, JSX } from 'react';
 import { Box, Drawer, Divider, IconButton, List, Button } from '@mui/material';
 import {
   KeyboardTab as KeyboardTabIcon,
@@ -17,24 +17,29 @@ interface INavMenuComp {}
 
 interface IListItemButton {
   startIconBtn: JSX.Element;
-  handleClick: (isBlank?: boolean) => void;
   endIconBtn?: JSX.Element;
   labelBtn?: string;
+  onClick: (isBlank?: boolean) => void;
 }
 
 const ListItemButton: FC<IListItemButton> = (props) => {
-  const { startIconBtn, endIconBtn, labelBtn, handleClick, onClick, ...rest } = props;
+  const { startIconBtn, endIconBtn, labelBtn, onClick, ...rest } = props;
+
+
+  const handleClick = () => {
+   onClick();
+  }
 
   const handleMouseDown = (e) => {
     if (e.button === 1 || (e.ctrlKey && e.button === 0)) {
-      handleClick(true);
+      onClick(true);
     }
   };
   //TODO: разобраться с classNames её типизацией
 
   return (
     <Button
-      onClick={onClick}
+      onClick={handleClick}
       onMouseDown={handleMouseDown}
       startIcon={startIconBtn}
       endIcon={endIconBtn}
