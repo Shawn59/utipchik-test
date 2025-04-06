@@ -17,6 +17,7 @@ export default defineConfig({
       '@molecules': path.resolve(__dirname, 'src/_molecules'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
       '@views': path.resolve(__dirname, 'src/views'),
+      '@apiMoke': path.resolve(__dirname, 'src/api-moke'),
     },
   },
 

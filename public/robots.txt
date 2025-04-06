@@ -1,22 +1,3 @@
 User-agent: *
-Disallow: /sign-in
-Disallow: /sign-up
-Disallow: /gorodmapp
-Disallow: /mobapp
-Disallow: /app
-Disallow: /home
-Disallow: /profile
-Disallow: /my-card
-Disallow: /my-orders
-Disallow: /favorites
-Disallow: /settings
-Disallow: /notifications
-Disallow: /history
-Disallow: /quests
-Disallow: /help/cookies
-Disallow: /help/about
-Disallow: /confirm
-Disallow: /delete-profile-info
-Disallow: /deeplink
-Disallow: /yandexmarket
-Disallow: /mobile-travel
+
+Disallow: /

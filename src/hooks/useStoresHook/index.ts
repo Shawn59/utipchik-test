@@ -1,6 +1,7 @@
-/*import React, { useContext } from 'react';
-import { AppContext } from '../../context';
+import { useContext } from 'react';
+import { MobxContext } from '../../context';
+import { storesType } from '../../stores/RootStore';
 
 export const useStoresHook = () => {
-    return useContext(AppContext);
-};*/
+  return useContext(MobxContext) as storesType;
+};

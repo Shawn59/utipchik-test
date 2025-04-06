@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tsc -b & vite",
+    "dev": "vite",
+    "dev-with-ts": "tsc -b & vite",
     "build": "tsc -b && vite build",
     "lint": "eslint scheduler_epip",
     "preview": "vite preview",
@@ -16,6 +17,7 @@
     "@mui/icons-material": "^7.0.1",
     "@mui/material": "^7.0.1",
     "classnames": "^2.5.1",
+    "mobx": "^6.13.7",
     "mobx-react-lite": "^4.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

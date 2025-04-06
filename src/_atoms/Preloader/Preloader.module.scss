@@ -1,5 +1,3 @@
-@import "src/styles/index";
-
 $yellow: #feb60a;
 $red: #ff0062;
 $blue: #00dbf9;
@@ -70,7 +68,7 @@ $blueDark: #1a1940;
     }
 
     &.accent {
-      background-color: $accent-txt-icn;
+      background-color: red;
     }
   }
 }

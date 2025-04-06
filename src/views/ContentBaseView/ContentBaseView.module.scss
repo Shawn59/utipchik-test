@@ -1,0 +1,21 @@
+.contentBaseView {
+  height: 100%;
+  width: 100%;
+
+  .fastFiltersContainer {
+    display: flex;
+    gap: 16px;
+
+    .labelChip {
+      display: flex;
+      gap: 0 4px;
+
+      .text {
+      }
+
+      .count {
+
+      }
+    }
+  }
+}

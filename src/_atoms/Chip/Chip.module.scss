@@ -1,6 +1,7 @@
 @use "src/styles/index" as *;
 
 .chipAtomContainer {
+  cursor: pointer;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -13,9 +14,8 @@
     :global(.MuiChip-label) {
       font-family: $fontMedium;
       font-weight: 500;
-      font-size: 18px;
-      line-height: 24px;
-      color: $colorGreen_500;
+      font-size: 14px;
+      line-height: 18px;
       padding: 0;
     }
 
@@ -33,12 +33,13 @@
   }
 
 
-  &.Filled {
+  &.Primary {
     :global(.MuiChip-root) {
-      background: $element-grey-E4E8F6;
+      background: $colorBlue_600;
+      color: $colorWhite;
 
       &:hover {
-        background: $element-purple_D8DEF2;
+        background: $colorRed_200;
       }
 
       &:active {
@@ -46,14 +47,38 @@
       }
 
       &.selected {
-        background: $accent-txt-icn;
+        background: $colorBlue_900;
+      }
+
+      &:global(.Mui-disabled) {
+        opacity: 0.25;
+      }
+    }
+  }
+
+  &.Outlined {
+    :global(.MuiChip-root) {
+      border: 1px solid $colorBlue_900;
+      background: transparent;
+
+      :global(.MuiChip-label) {
+        color: $colorBlue_900;
+      }
+
+      &:hover {
+        background: $colorBlue_100;
+      }
+
+      &:active {
+        box-shadow: none;
+      }
+
+      &.selected {
+        background: $colorBlue_900;
+        color: $colorWhite;
 
         :global(.MuiChip-label) {
-          color: $element-white-FEFDFF;
-        }
-
-        svg {
-          fill: $element-white-FEFDFF;
+          color: $colorWhite;
         }
       }
 

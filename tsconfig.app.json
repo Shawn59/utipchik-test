@@ -34,7 +34,8 @@
       "@services": ["src/services"],
       "@svgIcons": ["src/svgIcons"],
       "@api": ["src/backend/API/"],
-      "@constants": ["src/constants/"]
+      "@apiMoke": ["src/api-moke/"],
+      "@constants": ["src/constants/"],
     },
     "allowSyntheticDefaultImports": true
   },

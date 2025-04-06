@@ -9,12 +9,12 @@
     gap: 20px;
     background: s.$colorGrey_000;
     flex: 1;
-    height: 100dvh;
 
     .content {
       padding: 32px;
       background: s.$colorWhite;
       border-radius: 16px;
+      height: calc(100dvh - 84px);
     }
   }
 }

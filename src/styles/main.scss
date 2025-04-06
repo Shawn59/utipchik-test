@@ -1,11 +1,10 @@
 @use 'varibles' as *;
 
 html, body {
-  min-width: 320px;
+  min-width: 1440px;
   line-height: 1.67;
   font-size: 14px;
   scroll-behavior: smooth;
-  overflow-x: hidden;
   margin: 0;
   padding: 0;
 }
@@ -36,11 +35,7 @@ html, body {
 * {
   font-family: $fontRegular;
   color: $colorDarkTurquoise_900;
-}
-
-// Правка элемента вставки ссылки CKEditor5
-.ck-balloon-panel {
-  z-index: 9999 !important;
+  box-sizing: border-box;
 }
 
 .MuiInputLabel-root {

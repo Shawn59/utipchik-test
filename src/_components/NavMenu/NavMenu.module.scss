@@ -107,9 +107,9 @@
   .drawerOpen {
     width: 272px;
 
-    @media (max-width: 1439.89px) {
+    /*@media (max-width: 1439.89px) {
       width: 92px;
-    }
+    }*/
 
     :global(.MuiDrawer-paper) {
       width: 272px;
