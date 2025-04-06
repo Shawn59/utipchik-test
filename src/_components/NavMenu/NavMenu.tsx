@@ -2,8 +2,16 @@ import { FC, JSX } from 'react';
 import { Box, Drawer, Divider, IconButton, List, Button } from '@mui/material';
 import {
   KeyboardTab as KeyboardTabIcon,
-  FindInPageOutlined as FindInPageOutlinedIcon,
-  SourceOutlined as SourceOutlinedIcon,
+  StorageOutlined as StorageOutlinedIcon,
+  SubscriptionsOutlined as SubscriptionsOutlinedIcon,
+  StreamOutlined as StreamOutlinedIcon,
+  InfoOutline as InfoOutlineIcon,
+  MapOutlined as MapOutlinedIcon,
+  RadarOutlined as RadarOutlinedIcon,
+  PeopleOutline as PeopleOutlineIcon,
+  SummarizeOutlined as SummarizeOutlinedIcon,
+  SellOutlined as SellOutlinedIcon,
+  SettingsOutlined as SettingsOutlinedIcon,
 } from '@mui/icons-material';
 import ListItem from '@mui/material/ListItem';
 import { useOpenHook } from '@hooks';
@@ -12,15 +20,7 @@ import styles from './NavMenu.module.scss';
 import Slide from '@mui/material/Slide';
 import logoStr from '/mos-metro-logo.svg?url';
 import { matchPath, useNavigate } from 'react-router-dom';
-
-interface INavMenuComp {}
-
-interface IListItemButton {
-  startIconBtn: JSX.Element;
-  endIconBtn?: JSX.Element;
-  labelBtn?: string;
-  onClick: (isBlank?: boolean) => void;
-}
+import {IListItemButton, INavMenuData} from "./NavMenuInterfaces";
 
 const ListItemButton: FC<IListItemButton> = (props) => {
   const { startIconBtn, endIconBtn, labelBtn, onClick, ...rest } = props;
@@ -66,23 +66,26 @@ export const NavMenuComp = () => {
     }
   };
 
-  const navMenuData = [
+  const navMenuData: INavMenuData[] = [
     {
       id: 1,
       path: '/content-base',
       label: 'База контента',
+      IconElem: StorageOutlinedIcon,
       onClick: () => setLocation('/content-base'),
     },
     {
       id: 2,
       path: '/media-plans',
       label: 'Медиапланы',
+      IconElem: SubscriptionsOutlinedIcon,
       onClick: () => setLocation('/media-plans'),
     },
     {
       id: 3,
       path: '/live-broadcast',
       label: 'Online - Вещание',
+      IconElem: StreamOutlinedIcon,
       onClick: () => setLocation('/live-broadcast'),
     },
 
@@ -90,6 +93,7 @@ export const NavMenuComp = () => {
       id: 4,
       path: '/emergency-information',
       label: 'Информирование',
+      IconElem: InfoOutlineIcon,
       onClick: () => setLocation('/emergency-information'),
     },
 
@@ -97,6 +101,7 @@ export const NavMenuComp = () => {
       id: 5,
       path: '/interactive-map',
       label: 'Интерактивная карта',
+      IconElem: MapOutlinedIcon,
       onClick: () => setLocation('/interactive-map'),
     },
 
@@ -104,6 +109,7 @@ export const NavMenuComp = () => {
       id: 6,
       path: '/monitoring',
       label: 'Мониторинг',
+      IconElem: RadarOutlinedIcon,
       onClick: () => setLocation('/monitoring'),
     },
 
@@ -111,6 +117,7 @@ export const NavMenuComp = () => {
       id: 7,
       path: '/users',
       label: 'Пользователи',
+      IconElem: PeopleOutlineIcon,
       onClick: () => setLocation('/users'),
     },
 
@@ -118,6 +125,7 @@ export const NavMenuComp = () => {
       id: 8,
       path: '/reports',
       label: 'Отчет',
+      IconElem: SummarizeOutlinedIcon,
       onClick: () => setLocation('/reports'),
     },
 
@@ -125,6 +133,7 @@ export const NavMenuComp = () => {
       id: 9,
       path: '/ad-moderation',
       label: 'Модерация рекламы',
+      IconElem: SellOutlinedIcon,
       onClick: () => setLocation('/ad-moderation'),
     },
 
@@ -132,6 +141,7 @@ export const NavMenuComp = () => {
       id: 10,
       path: '/settings',
       label: 'Настройки',
+      IconElem: SettingsOutlinedIcon,
       onClick: () => setLocation('/settings'),
     },
   ];
@@ -158,18 +168,21 @@ export const NavMenuComp = () => {
         <Divider />
 
         <List>
-          {navMenuData.map((item) => (
+          {navMenuData.map((item) => {
+            const {IconElem} = item;
+
+            return (
             <ListItem
               key={item.id}
               className={classNames(styles.listItem, !!matchPath(item.path, location.pathname) ? styles.selected : '')}
             >
               <ListItemButton
                 labelBtn={isOpen ? item.label : ''}
-                startIconBtn={<SourceOutlinedIcon className={styles.itemIcon} />}
+                startIconBtn={IconElem ? <IconElem className={styles.itemIcon} /> : <></>}
                 onClick={item.onClick}
               />
             </ListItem>
-          ))}
+          )})}
         </List>
       </Drawer>
     </Box>

@@ -139,6 +139,14 @@
       .listItem {
         justify-content: center;
 
+        .listItemBtn {
+          justify-content: center;
+
+          :global(.MuiButton-startIcon) {
+            margin: 0;
+          }
+        }
+
         .itemIcon {
           fill: $colorWhite;
         }
