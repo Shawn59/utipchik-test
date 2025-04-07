@@ -1,0 +1,25 @@
+@use 'src/styles/index' as *;
+
+.pageContentLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: $colorGrey_000;
+  flex: 1;
+
+  .headerContainer {
+    width: 100%;
+    padding: 20px;
+    background: $colorWhite;
+    min-height: 80px;
+
+    @extend %shadowForBlock;
+  }
+
+  .contentContainer {
+    padding: 32px;
+    background: $colorWhite;
+    border-radius: 16px;
+    height: calc(100dvh - 100px);
+  }
+}

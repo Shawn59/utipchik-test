@@ -36,6 +36,7 @@
       "@api": ["src/backend/API/"],
       "@apiMoke": ["src/api-moke/"],
       "@constants": ["src/constants/"],
+      "@layouts": ["src/layouts/"],
     },
     "allowSyntheticDefaultImports": true
   },

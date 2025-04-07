@@ -1,12 +1,17 @@
-@import "src/styles/varibles";
+@use "src/styles/index" as *;
 
-.button-atom {
-  &.MuiButton-root {
-    font-size: 14px;
-    line-height: 20px;
-    text-transform: none;
-    font-family: $fontRegular;
-    font-weight: 400;
+.buttonAtom {
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: $fontRegular;
+
+  :global(.MuiButton-startIcon) {
+    margin: 0;
+  }
+
+  :global(.MuiButton-endIcon) {
+    margin: 0;
   }
 
   &.Secondary {
@@ -40,6 +45,26 @@
 
     &:hover {
       background: $colorBlue_800;
+    }
+
+    &:disabled {
+      background: $colorBlue_300;
+      color: $colorWhite;
+    }
+  }
+
+  &.Success {
+    border-radius: 4px;
+    box-shadow: none;
+    background: $colorGreen_500;
+    color: $colorWhite;
+
+    svg {
+      fill: $colorWhite;
+    }
+
+    &:hover {
+      background: $colorGreen_400;
     }
 
     &:disabled {
@@ -90,7 +115,7 @@
     }
   }
 
-  &.Delete-Primary {
+  &.DeletePrimary {
     border-radius: 4px;
     box-shadow: none;
     background: $colorRed_800;
@@ -109,7 +134,7 @@
     }
   }
 
-  &.Delete-Secondary {
+  &.DeleteSecondary {
     border-radius: 4px;
     box-shadow: none;
     background: $colorRed_100;
@@ -129,7 +154,7 @@
     }
   }
 
-  &.Copy-Primary {
+  &.CopyPrimary {
     border-radius: 4px;
     box-shadow: none;
     background: $colorOrange_800;
@@ -157,10 +182,6 @@
   &.middle {
     padding: 10px 16px;
     font-size: 14px;
-    gap: 0 10px;
-
-    .MuiButton-endIcon, .MuiButton-startIcon {
-      margin: 0;
-    }
+    gap: 0 4px;
   }
 }

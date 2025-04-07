@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
-import styles from './styles.scss';
+import styles from './Breadcrumbs.module.scss';
 import { Breadcrumbs } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { IBreadcrumbsAtom } from './interfaces';
+import { IBreadcrumbsAtom } from './Breadcrumbs.interfaces';
 
 export const BreadcrumbsAtom: FC<IBreadcrumbsAtom> = (props) => {
     const { data } = props;
+
     return (
         <div className={styles.breadcrumbsContainer}>
             <Breadcrumbs>

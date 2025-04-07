@@ -13,21 +13,21 @@ import {
   SettingsView,
 } from '@views';
 
-export const AppRouters = () => {
-  const navigationRoutes = [
-    { path: '/content-base', element: <ContentBaseView /> },
-    { path: '/media-plans', element: <MediaPlansView /> },
-    { path: '/live-broadcast', element: <LiveBroadcastView /> },
-    { path: '/emergency-information', element: <EmergencyInformationView /> },
-    { path: '/interactive-map', element: <InteractiveMapView /> },
-    { path: '/monitoring', element: <MonitoringView /> },
-    { path: '/users', element: <UsersView /> },
-    { path: '/reports', element: <ReportsView /> },
-    { path: '/ad-moderation', element: <AdModerationView /> },
-    { path: '/settings', element: <SettingsView /> },
-    { path: '*', element: <NoMatchPageView /> },
-  ];
+export const navigationRoutes = [
+  { pageName: 'База контента', path: '/content-base', element: <ContentBaseView /> },
+  { pageName: 'Медиапланы', path: '/media-plans', element: <MediaPlansView /> },
+  { pageName: 'Online - Вещание', path: '/live-broadcast', element: <LiveBroadcastView /> },
+  { pageName: 'Информирование', path: '/emergency-information', element: <EmergencyInformationView /> },
+  { pageName: 'Интерактивная карта', path: '/interactive-map', element: <InteractiveMapView /> },
+  { pageName: 'Мониторинг', path: '/monitoring', element: <MonitoringView /> },
+  { pageName: 'Пользователи', path: '/users', element: <UsersView /> },
+  { pageName: 'Отчет', path: '/reports', element: <ReportsView /> },
+  { pageName: 'Модерация рекламы', path: '/ad-moderation', element: <AdModerationView /> },
+  { pageName: 'Настройки', path: '/settings', element: <SettingsView /> },
+  { pageName: '404', path: '*', element: <NoMatchPageView /> },
+];
 
+export const AppRouters = () => {
   return (
     <Routes>
       {navigationRoutes.map((item) => {
