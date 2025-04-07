@@ -1,8 +1,4 @@
-$yellow: #feb60a;
-$red: #ff0062;
-$blue: #00dbf9;
-$violet: #da00f7;
-$blueDark: #1a1940;
+@use 'src/styles/index' as *;
 
 .preloaderContainer {
   display: flex;
@@ -48,11 +44,7 @@ $blueDark: #1a1940;
       animation-delay: 0.4s;
     }
 
-    &.yellow {
-      background-color: $yellow;
-    }
-
-    &.red {
+/*    &.red {
       background-color: $red;
       animation-delay: 0.1s;
     }
@@ -65,10 +57,10 @@ $blueDark: #1a1940;
     &.violet {
       background-color: $violet;
       animation-delay: 0.3s;
-    }
+    }*/
 
     &.accent {
-      background-color: red;
+      background-color: $colorBlue_900;
     }
   }
 }

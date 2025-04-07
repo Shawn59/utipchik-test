@@ -1,0 +1,15 @@
+@use "src/styles/varibles" as *;
+
+.breadcrumbsContainer {
+  display: flex;
+  align-items: center;
+
+  a, span, li {
+    font-size: 14px;
+    color: $colorDeepBlack_700;
+  }
+
+  .nowItem {
+    color: $colorDarkTurquoise_900;
+  }
+}

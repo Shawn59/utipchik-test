@@ -1,11 +1,11 @@
-import { FC, JSX } from 'react';
+import { FC } from 'react';
 import { Box, Drawer, Divider, IconButton, List, Button } from '@mui/material';
 import {
   KeyboardTab as KeyboardTabIcon,
   StorageOutlined as StorageOutlinedIcon,
   SubscriptionsOutlined as SubscriptionsOutlinedIcon,
   StreamOutlined as StreamOutlinedIcon,
-  InfoOutline as InfoOutlineIcon,
+  InfoOutlined as InfoOutlineIcon,
   MapOutlined as MapOutlinedIcon,
   RadarOutlined as RadarOutlinedIcon,
   PeopleOutline as PeopleOutlineIcon,
@@ -20,15 +20,14 @@ import styles from './NavMenu.module.scss';
 import Slide from '@mui/material/Slide';
 import logoStr from '/mos-metro-logo.svg?url';
 import { matchPath, useNavigate } from 'react-router-dom';
-import {IListItemButton, INavMenuData} from "./NavMenuInterfaces";
+import { IListItemButton, INavMenuData } from './NavMenuInterfaces';
 
 const ListItemButton: FC<IListItemButton> = (props) => {
   const { startIconBtn, endIconBtn, labelBtn, onClick, ...rest } = props;
 
-
   const handleClick = () => {
-   onClick();
-  }
+    onClick();
+  };
 
   const handleMouseDown = (e) => {
     if (e.button === 1 || (e.ctrlKey && e.button === 0)) {
@@ -169,20 +168,24 @@ export const NavMenuComp = () => {
 
         <List>
           {navMenuData.map((item) => {
-            const {IconElem} = item;
+            const { IconElem } = item;
 
             return (
-            <ListItem
-              key={item.id}
-              className={classNames(styles.listItem, !!matchPath(item.path, location.pathname) ? styles.selected : '')}
-            >
-              <ListItemButton
-                labelBtn={isOpen ? item.label : ''}
-                startIconBtn={IconElem ? <IconElem className={styles.itemIcon} /> : <></>}
-                onClick={item.onClick}
-              />
-            </ListItem>
-          )})}
+              <ListItem
+                key={item.id}
+                className={classNames(
+                  styles.listItem,
+                  !!matchPath(item.path, location.pathname) ? styles.selected : '',
+                )}
+              >
+                <ListItemButton
+                  labelBtn={isOpen ? item.label : ''}
+                  startIconBtn={<IconElem className={styles.itemIcon} />}
+                  onClick={item.onClick}
+                />
+              </ListItem>
+            );
+          })}
         </List>
       </Drawer>
     </Box>

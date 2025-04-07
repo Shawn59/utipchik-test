@@ -1,3 +1,18 @@
+@use 'src/styles/index' as *;
+
+.header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+
+  .btnContainer {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+
 .contentBaseView {
   height: 100%;
   width: 100%;

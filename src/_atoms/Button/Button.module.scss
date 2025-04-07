@@ -1,3 +1,187 @@
+@use "src/styles/index" as *;
+
 .buttonAtom {
-  background: red;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: none;
+  font-family: $fontRegular;
+
+  :global(.MuiButton-startIcon) {
+    margin: 0;
+  }
+
+  :global(.MuiButton-endIcon) {
+    margin: 0;
+  }
+
+  &.Secondary {
+    background: $colorDeepGrey_050;
+    border-radius: 4px;
+    box-shadow: none;
+    color: $colorDeepGrey_900;
+
+    svg {
+      fill: $colorDeepGrey_900;
+    }
+
+    &:hover {
+      background: $colorGrey_100;
+    }
+
+    &:disabled {
+      background: $colorDeepGrey_050;
+    }
+  }
+
+  &.Primary {
+    border-radius: 4px;
+    box-shadow: none;
+    background: $colorBlue_900;
+    color: $colorWhite;
+
+    svg {
+      fill: $colorWhite;
+    }
+
+    &:hover {
+      background: $colorBlue_800;
+    }
+
+    &:disabled {
+      background: $colorBlue_300;
+      color: $colorWhite;
+    }
+  }
+
+  &.Success {
+    border-radius: 4px;
+    box-shadow: none;
+    background: $colorGreen_500;
+    color: $colorWhite;
+
+    svg {
+      fill: $colorWhite;
+    }
+
+    &:hover {
+      background: $colorGreen_400;
+    }
+
+    &:disabled {
+      background: $colorBlue_300;
+      color: $colorWhite;
+    }
+  }
+
+  &.Outline {
+    border-radius: 4px;
+    box-shadow: none;
+    background: $colorWhite;
+    color: $colorBlue_900;
+    border: 1px solid $colorBlue_900;
+
+    svg {
+      fill: $colorBlue_900;
+    }
+
+    &:hover {
+      background: $colorBlue_050;
+    }
+
+    &:disabled {
+      color: $colorBlue_300;
+      border: 1px solid $colorBlue_300;
+      background: $colorWhite;
+    }
+  }
+
+  &.Ternary {
+    border-radius: 4px;
+    box-shadow: none;
+    background: $colorBlue_050;
+    color: $colorBlue_900;
+
+    svg {
+      fill: $colorBlue_900;
+    }
+
+    &:hover {
+      background: $colorBlue_100;
+    }
+
+    &:disabled {
+      color: $colorBlue_400;
+      background: $colorBlue_000;
+    }
+  }
+
+  &.DeletePrimary {
+    border-radius: 4px;
+    box-shadow: none;
+    background: $colorRed_800;
+    color: $colorWhite;
+
+    svg {
+      fill: $colorWhite;
+    }
+
+    &:hover {
+      background: $colorRed_700;
+    }
+
+    &:disabled {
+      background: $colorRed_300;
+    }
+  }
+
+  &.DeleteSecondary {
+    border-radius: 4px;
+    box-shadow: none;
+    background: $colorRed_100;
+    color: $colorRed_900;
+
+    svg {
+      fill: $colorWhite;
+    }
+
+    &:hover {
+      background: $colorRed_200;
+    }
+
+    &:disabled {
+      background: $colorRed_050;
+      color: $colorRed_400;
+    }
+  }
+
+  &.CopyPrimary {
+    border-radius: 4px;
+    box-shadow: none;
+    background: $colorOrange_800;
+    color: $colorWhite;
+
+    svg {
+      fill: $colorWhite;
+    }
+
+    &:hover {
+      background: $colorOrange_700;
+    }
+
+    &:disabled {
+      background: $colorOrange_300;
+      color: $colorWhite;
+    }
+  }
+
+  &.small {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  &.middle {
+    padding: 10px 16px;
+    font-size: 14px;
+    gap: 0 4px;
+  }
 }

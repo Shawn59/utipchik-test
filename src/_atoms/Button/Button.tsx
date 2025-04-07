@@ -1,10 +1,25 @@
+import React, { FC } from 'react';
 import { Button } from '@mui/material';
 import styles from './Button.module.scss';
+import classNames from 'classnames';
 
-export const ButtonAtom = () => {
-  return (
-    <div>
-      <Button className={styles.buttonAtom}>{'Ку'}</Button>
-    </div>
-  );
+export interface IButtonAtom {
+    label?: string;
+    className?: string;
+    onClick?: () => void;
+    theme?: 'Primary' | 'Secondary' | 'Outline' | 'Ternary' | 'Delete-Primary' | 'Delete-Secondary' | 'Copy-Primary' | 'Success';
+    disabled?: boolean;
+    size?: 'small' | 'middle';
+    startIcon?: JSX.Element;
+    endIcon?: JSX.Element;
+}
+
+export const ButtonAtom: FC<IButtonAtom> = (props) => {
+    const { className, label, theme = 'Primary', size = 'middle', ...rest } = props;
+
+    return (
+        <Button className={classNames(styles.buttonAtom, styles[theme], styles[size], className)} {...rest}>
+            {label}
+        </Button>
+    );
 };
