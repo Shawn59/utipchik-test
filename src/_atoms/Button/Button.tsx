@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC, JSX } from 'react';
 import { Button } from '@mui/material';
 import styles from './Button.module.scss';
 import classNames from 'classnames';
