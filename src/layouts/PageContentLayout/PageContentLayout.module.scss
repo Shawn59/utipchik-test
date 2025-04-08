@@ -11,7 +11,7 @@
     width: 100%;
     padding: 20px;
     background: $colorWhite;
-    min-height: 80px;
+    min-height: 134px;
 
     @extend %shadowForBlock;
   }
@@ -20,6 +20,6 @@
     padding: 32px;
     background: $colorWhite;
     border-radius: 16px;
-    height: calc(100dvh - 100px);
+    /*height: calc(100dvh - 100px);*/
   }
 }

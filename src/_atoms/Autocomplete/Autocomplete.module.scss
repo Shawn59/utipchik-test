@@ -1,0 +1,7 @@
+@use 'src/styles/index' as *;
+
+.autocompleteAtom {
+  .searchIcon {
+    fill: $colorDeepGrey_400;
+  }
+}
