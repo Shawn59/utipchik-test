@@ -2,13 +2,24 @@
 
 .header {
   display: flex;
+  flex-direction: column;
   gap: 20px;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
-  .btnContainer {
+  .operationBlock {
     display: flex;
-    gap: 8px;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+
+    .searchInput {
+      min-width: 300px;
+    }
+
+    .btnContainer {
+      display: flex;
+      gap: 8px;
+    }
   }
 }
 

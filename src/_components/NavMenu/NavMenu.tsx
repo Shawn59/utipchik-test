@@ -12,6 +12,8 @@ import {
   SummarizeOutlined as SummarizeOutlinedIcon,
   SellOutlined as SellOutlinedIcon,
   SettingsOutlined as SettingsOutlinedIcon,
+  Logout as LogoutIcon,
+  Person as PersonIcon,
 } from '@mui/icons-material';
 import ListItem from '@mui/material/ListItem';
 import { useOpenHook } from '@hooks';
@@ -21,6 +23,9 @@ import Slide from '@mui/material/Slide';
 import logoStr from '/mos-metro-logo.svg?url';
 import { matchPath, useNavigate } from 'react-router-dom';
 import { IListItemButton, INavMenuData } from './NavMenuInterfaces';
+import { observer } from 'mobx-react-lite';
+import { useStoresHook } from '../../hooks/useStoresHook';
+import config from '../../../settings/config.js';
 
 const ListItemButton: FC<IListItemButton> = (props) => {
   const { startIconBtn, endIconBtn, labelBtn, onClick, ...rest } = props;
@@ -34,7 +39,6 @@ const ListItemButton: FC<IListItemButton> = (props) => {
       onClick(true);
     }
   };
-  //TODO: разобраться с classNames её типизацией
 
   return (
     <Button
@@ -52,8 +56,10 @@ const ListItemButton: FC<IListItemButton> = (props) => {
   );
 };
 
-export const NavMenuComp = () => {
+export const NavMenuComp = observer(() => {
   const { isOpen, handleOpen, handleClose } = useOpenHook(true);
+
+  const { userStore } = useStoresHook();
 
   const navigate = useNavigate();
 
@@ -180,14 +186,40 @@ export const NavMenuComp = () => {
               >
                 <ListItemButton
                   labelBtn={isOpen ? item.label : ''}
-                  startIconBtn={<IconElem className={styles.itemIcon} />}
+                  startIconBtn={(<IconElem className={styles.itemIcon} />) as React.ReactElement}
                   onClick={item.onClick}
                 />
               </ListItem>
             );
           })}
         </List>
+
+        {userStore.userInfo && (
+          <div className={styles.menuFooter}>
+            <div className={classNames(styles.accountContainer, !isOpen ? styles.alignCenter : '')}>
+              <Slide in={isOpen} direction={'left'}>
+                <div className={!isOpen ? styles.hidden : ''}>
+                  <div className={styles.fioContainer}>
+                    <PersonIcon className={styles.fioIcon}/>
+
+                    <div className={styles.fio}>{`${userStore.userInfo.fio}`}</div>
+                  </div>
+
+                  <span className={styles.role}>{userStore.userInfo.role}</span>
+
+                  <div className={styles.version}>{config.version}</div>
+                </div>
+              </Slide>
+
+              <IconButton className={styles.arrow}>
+                <LogoutIcon />
+              </IconButton>
+
+              {!isOpen && <div className={styles.version}>{config.version}</div>}
+            </div>
+          </div>
+        )}
       </Drawer>
     </Box>
   );
-};
+});

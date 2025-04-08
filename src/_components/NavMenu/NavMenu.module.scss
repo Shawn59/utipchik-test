@@ -101,15 +101,70 @@
         font-family: $fontRegular;
       }
     }
+
+    .menuFooter {
+      height: 106px;
+      border-top: 1px solid #35384C;
+      margin: auto 16px 0 16px;
+
+      .accountContainer {
+        font-size: 14px;
+        line-height: 18px;
+        color: $colorWhite;
+        margin: 20px 0 12px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &.alignCenter {
+          justify-content: center;
+          flex-direction: column;
+          margin: auto 0;
+          height: 100%;
+          gap: 16px;
+
+          .version {
+            margin: 0;
+            text-align: center;
+          }
+        }
+
+        .fioContainer {
+          display: flex;
+          gap: 0 4px;
+          align-items: center;
+
+          .fio {
+            width: 172px;
+            color: $colorWhite;
+          }
+
+          .fioIcon {
+            fill: $colorWhite;
+            width: 18px;
+          }
+        }
+
+        .role {
+          font-size: 12px;
+          margin-top: 2px;
+          color: $colorDeepGrey_900;
+          margin-left: 20px;
+        }
+
+        .version {
+          margin-top: 8px;
+          font-size: 12px;
+          color: $colorDeepGrey_900;
+          margin-left: 20px;
+        }
+      }
+    }
   }
 
   //стили для развернутной менюшки
   .drawerOpen {
     width: 272px;
-
-    /*@media (max-width: 1439.89px) {
-      width: 92px;
-    }*/
 
     :global(.MuiDrawer-paper) {
       width: 272px;

@@ -1,4 +1,4 @@
-export const getBadeContentMDAPI = () => {
+export const getBaseContentMDAPI = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       const response = {
@@ -40,5 +40,43 @@ export const getBadeContentMDAPI = () => {
 
       resolve(response);
     }, 1000);
+  });
+};
+
+export const getMediaSearchListAPI = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const response = {
+        status: 'success',
+        elements: [
+          {
+            id: 1,
+            name: 'Стрим',
+          },
+
+          {
+            id: 2,
+            name: 'Стрим 2',
+          },
+
+          {
+            id: 3,
+            name: 'Реклама',
+          },
+
+          {
+            id: 4,
+            name: 'Кинцо',
+          },
+
+          {
+            id: 5,
+            name: 'Кинофильм',
+          },
+        ],
+      };
+
+      resolve(response);
+    }, 300);
   });
 };

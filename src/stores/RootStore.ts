@@ -1,8 +1,10 @@
-import { ContentBaseStore } from './ContentBaseStore/ContentBaseStore';
+import { ContentBaseStore } from './ViewStores/ContentBaseStore/ContentBaseStore';
+import {UserStore} from "./UserStore/UserStore";
 
 class RootStore {
   stores = {
     contentBaseStore: new ContentBaseStore(this),
+    userStore: new UserStore(this),
   };
 }
 
