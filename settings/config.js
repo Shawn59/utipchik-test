@@ -1,8 +1,10 @@
-{
-    "adminSite": "https://stage.troika-gorod.ru/",
-    "adminSiteProd": "https://api.troika-gorod.ru/",
-    "api": {
-        "proxy": "/api"
-    },
-    "version": "v1.7.0"
-}
+const config = {
+  adminSite: '',
+  adminSiteProd: '',
+  api: {
+    proxy: '/api',
+  },
+  version: 'v1.0.0',
+};
+
+export default config;

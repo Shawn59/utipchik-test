@@ -5,7 +5,7 @@
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "skipLibCheck": true,
+    "skipLibCheck": true,// пропускает проверку типов в файлах библиотек
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -41,6 +41,6 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "src"
+    "src" // указывает, какие файлы TypeScript включать в проект
   ]
 }

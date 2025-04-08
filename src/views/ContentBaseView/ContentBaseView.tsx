@@ -21,7 +21,7 @@ export const ContentBaseView = observer(() => {
             <BreadcrumbsAtom data={contentBaseStore.breadcrumbsList}/>
 
             <div className={styles.btnContainer}>
-                <ButtonAtom label={'Добавить'} theme={'Success'} endIcon={<AddOutlinedIcon/>}/>
+                <ButtonAtom label={'Добавить'} theme={'Success'} endIcon={<AddOutlinedIcon/> as React.ReactElement}/>
             </div>
         </div>}
       Content={

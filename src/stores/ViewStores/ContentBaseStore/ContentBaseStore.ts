@@ -1,8 +1,8 @@
-import { rootStoreType } from '../RootStore';
+import { rootStoreType } from '../../RootStore';
 import { makeAutoObservable } from 'mobx';
 import { getBadeContentMDAPI } from '@apiMoke';
-import {IBreadcrumbsData} from "../../_atoms/Breadcrumbs/Breadcrumbs.interfaces";
-import {navigationRoutes} from "../../routes/routes";
+import {IBreadcrumbsData} from "../../../_atoms/Breadcrumbs/Breadcrumbs.interfaces";
+import {navigationRoutes} from "../../../routes/routes";
 
 export class ContentBaseStore {
   rootStore: rootStoreType;
