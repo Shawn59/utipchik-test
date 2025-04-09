@@ -1,0 +1,36 @@
+@import "src/styles/varibles";
+
+.filter-com-container {
+  .filter-btn {
+    height: 40px;
+    min-width: 40px;
+    padding: 12px 0;
+
+    .MuiButton-startIcon {
+      margin: 0;
+    }
+
+    svg {
+      font-size: 24px;
+    }
+  }
+}
+
+.filter-dialog {
+  .MuiPaper-root {
+    max-width: 398px;
+    width: 100%;
+    padding-bottom: 0;
+
+    .dialog-actions {
+      border-top: 1px solid $colorDeepGrey_100;
+      height: 72px;
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        width: auto;
+      }
+    }
+  }
+}

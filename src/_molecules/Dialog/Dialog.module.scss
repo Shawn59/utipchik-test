@@ -1,0 +1,52 @@
+@import "../../styles/varibles";
+
+.dialog-comp-container {
+  .MuiPaper-root {
+    padding: 20px 24px;
+    min-width: 304px;
+  }
+
+  .MuiDialogTitle-root, .MuiDialogActions-root {
+    padding: 0;
+  }
+
+  .MuiDialogContent-root {
+    padding: 6px 0 6px 0;
+  }
+
+
+  .dialog-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+    .title {
+      font-size: 20px;
+      color: $colorDarkTurquoise_900;
+      font-weight: 600;
+    }
+
+    .close-icon {
+      cursor: pointer;
+      fill: $colorDeepGrey_300;
+    }
+  }
+
+  .dialog-content {
+    margin: 10px 0 26px 0;
+    font-size: 16px;
+    line-height: 19px;
+    color: $colorDeepGrey_900;
+
+    > * {
+      color: $colorDeepGrey_900;
+    }
+  }
+
+  .dialog-actions {
+    .submit-btn {
+      width: 100%;
+    }
+  }
+}
