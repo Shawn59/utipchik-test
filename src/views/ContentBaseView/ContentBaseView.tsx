@@ -6,7 +6,8 @@ import { PreloaderFullContentMol } from '@molecules';
 import styles from './ContentBaseView.module.scss';
 import { PageContentLayout } from '@layouts';
 import { BreadcrumbsAtom } from '../../_atoms/Breadcrumbs/Breadcrumbs';
-import { AddOutlined as AddOutlinedIcon } from '@mui/icons-material';
+import { AddOutlined as AddOutlinedIcon, FilterAltOutlined as FilterAltOutlinedIcon } from '@mui/icons-material';
+import { FilterComp } from '@components';
 
 export const ContentBaseView = observer(() => {
   const { contentBaseStore } = useStoresHook();
@@ -22,13 +23,19 @@ export const ContentBaseView = observer(() => {
           <BreadcrumbsAtom data={contentBaseStore.breadcrumbsList} />
 
           <div className={styles.operationBlock}>
-            <AutocompleteAtom
-              label={'Поиск'}
-              options={contentBaseStore.mediaSearchList}
-              className={styles.searchInput}
-              isSearchIcon
-              onInputChange={contentBaseStore.getMediaSearchList}
-            />
+            <div className={styles.filtersContainer}>
+              <AutocompleteAtom
+                label={'Поиск'}
+                options={contentBaseStore.mediaSearchList}
+                className={styles.searchInput}
+                isSearchIcon
+                onInputChange={contentBaseStore.getMediaSearchList}
+              />
+
+              <FilterComp>
+                <div>{'Хелоу'}</div>
+              </FilterComp>
+            </div>
 
             <div className={styles.btnContainer}>
               <ButtonAtom label={'Добавить'} theme={'Success'} endIcon={(<AddOutlinedIcon />) as React.ReactElement} />

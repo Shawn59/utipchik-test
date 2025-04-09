@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, JSX } from 'react';
 import { DialogComp } from '@molecules';
 import { ButtonAtom } from '@atoms';
 import { useOpenHook } from '@hooks';
 import { FilterAltOutlined as FilterAltOutlinedIcon } from '@mui/icons-material';
-import styles from './Filter.module.scss';
+import styles from './FilterDialog.module.scss';
 
 export interface IFilterComp {
   title?: string;
@@ -13,6 +13,7 @@ export interface IFilterComp {
   onClear: () => void;
   onClose?: () => void;
   onOpen?: () => void;
+  children: JSX.Element;
 }
 
 export const FilterComp: FC<IFilterComp> = (props) => {
@@ -47,7 +48,7 @@ export const FilterComp: FC<IFilterComp> = (props) => {
         className={styles.filterBtn}
         onClick={handleOnOpen}
         theme={isActiveFilter ? 'Primary' : 'Secondary'}
-        startIcon={<FilterAltOutlinedIcon />}
+        startIcon={(<FilterAltOutlinedIcon />) as React.ReactElement}
         size={'small'}
       />
 
