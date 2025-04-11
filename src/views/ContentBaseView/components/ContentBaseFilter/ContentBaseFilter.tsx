@@ -78,12 +78,6 @@ export const ContentBaseFilter = observer(() => {
                 />
               </div>
 
-              <div className={styles.sliderContainer}>
-                <div>{'Длительность (в секундах): '}</div>
-
-                <RangeSliderAtom2 />
-              </div>
-
               <div className={styles.inputContainer}>
                 <SwitchAtom
                   label={'Состояние трансляции'}
