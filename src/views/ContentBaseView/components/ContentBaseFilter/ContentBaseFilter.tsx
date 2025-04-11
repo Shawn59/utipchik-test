@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import { FilterComp } from '@components';
 import { useStoresHook } from '@hooks';
-import { RangeSliderAtom, SelectAtom, SwitchAtom, RangeSliderAtom2 } from '@atoms';
+import { RangeSliderAtom, SelectAtom, SwitchAtom } from '@atoms';
 import { useMemo } from 'react';
 import styles from './ContentBaseFilter.module.scss';
 
