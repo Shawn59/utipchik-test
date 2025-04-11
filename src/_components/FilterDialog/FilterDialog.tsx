@@ -4,6 +4,7 @@ import { ButtonAtom } from '@atoms';
 import { useOpenHook } from '@hooks';
 import { FilterAltOutlined as FilterAltOutlinedIcon } from '@mui/icons-material';
 import styles from './FilterDialog.module.scss';
+import { observer } from 'mobx-react-lite';
 
 export interface IFilterComp {
   title?: string;
@@ -13,10 +14,10 @@ export interface IFilterComp {
   onClear: () => void;
   onClose?: () => void;
   onOpen?: () => void;
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 
-export const FilterComp: FC<IFilterComp> = (props) => {
+export const FilterComp: FC<IFilterComp> = observer((props) => {
   const { children, title = 'Фильтр', onSubmit, onClear, disabledBtn, isActiveFilter, onClose, onOpen } = props;
 
   const { isOpen, handleClose, handleOpen } = useOpenHook();
@@ -68,4 +69,4 @@ export const FilterComp: FC<IFilterComp> = (props) => {
       />
     </div>
   );
-};
+});

@@ -20,6 +20,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 12px;
+    padding: 0;
 
     .title {
       font-size: 20px;
@@ -45,6 +46,9 @@
   }
 
   .dialogActions {
+    display: flex;
+    gap: $gap-8;
+
     .submitBtn {
       width: 100%;
     }

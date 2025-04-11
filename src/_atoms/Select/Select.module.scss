@@ -1,28 +1,24 @@
-@import "../../../styles/varibles";
+@use "src/styles/index" as *;
 
-.select-atom-container {
-  &.MuiFormControl-root {
-    width: 100%;
-    margin: 0;
+.selectAtomContainer {
+  width: 100%;
+  margin: 0;
+  font-family: $fontRegular;
+
+  :global(.MuiInputLabel-root) {
     font-family: $fontRegular;
 
-    .MuiInputLabel-root {
-      color: $colorDeepGrey_300;
-      font-family: $fontRegular;
-
-      &.Mui-focused {
-        color: #1976d2;
-      }
-    }
-
-    .MuiSelect-select {
-      color: $colorDarkTurquoise_900;
-      font-family: $fontRegular;
-    }
-
-    .MuiSvgIcon-root {
-      fill: $colorDarkTurquoise_900;
+    :global(&.Mui-focused) {
+      color: #1976d2;
     }
   }
 
+  :global(.MuiSelect-select) {
+    color: $colorDarkTurquoise_900;
+    font-family: $fontRegular;
+  }
+
+  :global(.MuiSvgIcon-root) {
+    fill: $colorDarkTurquoise_900;
+  }
 }

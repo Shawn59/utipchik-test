@@ -1,47 +1,25 @@
 import Slider from '@mui/material/Slider';
-import { FC, useMemo } from 'react';
-import styles from './RangeSlider.module.scss';
-import { IOptions } from '../Select/Select.interfaces';
-import { Mark } from '@mui/material/Slider/useSlider.types';
+import { useState } from 'react';
+import styles from './RangeSlider2.module.scss';
 
-interface IRangeSliderAtom {
-  values: number[];
-  minValue: number;
-  maxValue: number;
-  step: number;
-  onChangeValue: (values: number[]) => void;
-}
+const marks = [
+  { label: '0', value: 0 },
+  { label: '30 сек.', value: 15 },
+  { label: '1 минута', value: 25 },
+  { label: '5 минут', value: 37 },
+  { label: '15 минут', value: 56 },
+  { label: '30 минут', value: 74 },
+  { label: '1ч+', value: 100 },
+];
 
-export const RangeSliderAtom: FC<IRangeSliderAtom> = (props) => {
-  const { values, minValue, maxValue, step, onChangeValue } = props;
+export const RangeSliderAtom2 = () => {
+  const [values, setValues] = useState([0, 450]);
 
-  const getMarks = useMemo(() => {
-    const marks: Mark[] = [];
-
-    for (let i = 0; i <= maxValue; i += 10) {
-      marks.push({
-        value: i,
-        label: i === 0 || i === maxValue ? (i === maxValue ? `${i}+` : `${i}`) : '',
-      });
+  const handleChange = (_event: Event, newValue: number[]) => {
+    if (newValue[0] !== newValue[1]) {
+      setValues(newValue);
     }
-
-    return marks;
-  }, []);
-
-  const handleChange = (_event: Event, newValue: number[], activeThumb: number) => {
-    if (newValue[1] - newValue[0] < step) {
-      if (activeThumb === 0) {
-        const clamped = Math.min(newValue[0], maxValue - step);
-
-        onChangeValue([clamped, clamped + step]);
-      } else {
-        const clamped = Math.max(newValue[1], step);
-
-        onChangeValue([clamped - step, clamped]);
-      }
-    } else {
-      onChangeValue(newValue);
-    }
+    console.log('newValue = ', newValue);
   };
 
   return (
@@ -53,10 +31,8 @@ export const RangeSliderAtom: FC<IRangeSliderAtom> = (props) => {
         value={values}
         onChange={handleChange as (event: Event, value: number | number[], activeThumb: number) => void}
         valueLabelDisplay="auto"
-        min={minValue}
-        max={maxValue}
-        marks={getMarks}
-        step={step}
+        marks={marks}
+        step={null}
       />
     </div>
   );

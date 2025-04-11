@@ -1,3 +1,23 @@
+@use "src/styles/index" as *;
+
 .rangeSlider {
-  width: 100%;
+  .slider {
+    color: $colorBlue_900;
+
+    :global(.MuiSlider-rail), :global(.MuiSlider-track) {
+      color: $colorBlue_900;
+    }
+
+    :global(.MuiSlider-thumb) {
+      color: $colorBlue_900;
+    }
+
+    :global(.MuiSlider-markLabel) {
+      color: #1E2238;
+    }
+
+    span {
+      color: $colorWhite;
+    }
+  }
 }

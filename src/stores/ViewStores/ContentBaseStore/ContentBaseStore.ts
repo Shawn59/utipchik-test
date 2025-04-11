@@ -1,8 +1,8 @@
 import { rootStoreType } from '../../RootStore';
 import { makeAutoObservable } from 'mobx';
 import { getBaseContentMDAPI, getMediaSearchListAPI } from '@apiMoke';
-import {IBreadcrumbsData} from "../../../_atoms/Breadcrumbs/Breadcrumbs.interfaces";
-import {navigationRoutes} from "../../../routes/routes";
+import { IBreadcrumbsData } from '../../../_atoms/Breadcrumbs/Breadcrumbs.interfaces';
+import { navigationRoutes } from '../../../routes/routes';
 
 export class ContentBaseStore {
   rootStore: rootStoreType;
@@ -35,9 +35,10 @@ export class ContentBaseStore {
   };
 
   getMediaSearchList = (_keywords: string) => {
-
     getMediaSearchListAPI().then((response: any) => {
-      this.mediaSearchList = response.elements.map(item => {return {id: item.id, label: item.name}});
+      this.mediaSearchList = response.elements.map((item) => {
+        return { id: item.id, label: item.name };
+      });
     });
   };
 }
