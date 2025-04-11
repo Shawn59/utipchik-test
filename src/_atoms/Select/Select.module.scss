@@ -1,0 +1,24 @@
+@use "src/styles/index" as *;
+
+.selectAtomContainer {
+  width: 100%;
+  margin: 0;
+  font-family: $fontRegular;
+
+  :global(.MuiInputLabel-root) {
+    font-family: $fontRegular;
+
+    :global(&.Mui-focused) {
+      color: #1976d2;
+    }
+  }
+
+  :global(.MuiSelect-select) {
+    color: $colorDarkTurquoise_900;
+    font-family: $fontRegular;
+  }
+
+  :global(.MuiSvgIcon-root) {
+    fill: $colorDarkTurquoise_900;
+  }
+}

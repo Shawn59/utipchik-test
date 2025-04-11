@@ -42,5 +42,6 @@
   },
   "include": [
     "src" // указывает, какие файлы TypeScript включать в проект
-  ]
+  ],
+  "exclude": ["node_modules"]
 }

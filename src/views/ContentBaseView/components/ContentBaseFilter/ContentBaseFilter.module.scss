@@ -1,0 +1,21 @@
+@use "src/styles/index" as *;
+
+.contentBaseFilter {
+}
+
+.filterContentContainer {
+  display: flex;
+  flex-direction: column;
+
+  .inputContainer {
+    display: flex;
+    gap: $gap-8;
+    width: 100%;
+    padding: $padding-8;
+  }
+
+  .sliderContainer {
+    width: 100%;
+    padding: $padding-8 42px $padding-16 22px;
+  }
+}

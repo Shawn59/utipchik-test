@@ -1,0 +1,17 @@
+@use "src/styles/index" as *;
+
+.switchAtom {
+  display: flex;
+  gap: 0 $gap-8;
+  align-items: center;
+
+  :global(.MuiSwitch-thumb) {
+    background-color: $colorWhite;
+  }
+
+  :global(.Mui-checked) {
+    :global(.MuiSwitch-thumb) {
+      background-color: $colorBlue_900;
+    }
+  }
+}
