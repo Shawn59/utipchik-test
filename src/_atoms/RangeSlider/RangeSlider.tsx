@@ -28,6 +28,10 @@ export const RangeSliderAtom: FC<IRangeSliderAtom> = (props) => {
     return marks;
   }, []);
 
+  const valueLabelFormat = (value: number) => {
+    return value === 180 ? `${value}+` : `${value}`;
+  };
+
   const handleChange = (_event: Event, newValue: number[], activeThumb: number) => {
     if (newValue[1] - newValue[0] < step) {
       if (activeThumb === 0) {
@@ -57,6 +61,7 @@ export const RangeSliderAtom: FC<IRangeSliderAtom> = (props) => {
         max={maxValue}
         marks={getMarks}
         step={step}
+        valueLabelFormat={valueLabelFormat}
       />
     </div>
   );
