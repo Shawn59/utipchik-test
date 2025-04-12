@@ -116,7 +116,7 @@ export const ContentBaseFilter = observer(() => {
           </div>
 
           <div className={styles.sliderContainer}>
-            <div>{'Длительность (в секундах): '}</div>
+            <div className={styles.title}>{'Длительность (в секундах): '}</div>
 
             <RangeSliderAtom
               values={fields.periodTime.value}
