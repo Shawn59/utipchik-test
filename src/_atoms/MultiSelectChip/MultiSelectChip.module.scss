@@ -1,0 +1,48 @@
+@use "src/styles/index" as *;
+
+.multiSelectChipAtomContainer {
+  width: 100%;
+
+  :global(&.MuiFormControl-root) {
+    width: 100%;
+    margin: 0;
+
+    :global(.MuiInputLabel-root) {
+      color: $colorDeepGrey_300;
+
+      :global(&.Mui-focused) {
+        color: #1976d2;
+      }
+    }
+
+    :global(.MuiSelect-select) {
+      color: $colorDarkTurquoise_900;
+      padding: 14px 32px 14px 14px;
+      min-height: 26px;
+    }
+
+    :global(.MuiSvgIcon-root) {
+      fill: $colorDarkTurquoise_900;
+    }
+
+    :global(.MuiChip-root) {
+      height: 26px;
+
+      :global(.MuiChip-label) {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.multiSelectOptionItem {
+  :global(.Mui-checked) {
+    :global(.MuiSvgIcon-root) {
+      fill: $colorBlue_900;
+    }
+  }
+
+  :global(.MuiTypography-root) {
+    font-size: 16px;
+  }
+}

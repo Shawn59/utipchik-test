@@ -18,12 +18,13 @@
     /* Linting */
     "strict": true,
     "noUnusedLocals": false,
-    "noImplicitAny": false,
+    "noImplicitAny": false, // Показывать ошибку, если где-то задан тип "any".
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
+    "esModuleInterop": true,
 
-    "baseUrl": ".",
+    "baseUrl": "./", // Путь до базовой папки для поиска не относительных путей до файлов.
     "paths": { // Дубли алиасов вебпака
       "@atoms": ["src/_atoms"],
       "@molecules": ["src/_molecules"],
@@ -38,7 +39,7 @@
       "@constants": ["src/constants/"],
       "@layouts": ["src/layouts/"],
     },
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true // Разрешить импортировать модули не имеющие внутри себя "import default"
   },
   "include": [
     "src" // указывает, какие файлы TypeScript включать в проект

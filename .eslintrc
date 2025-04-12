@@ -1,22 +1,27 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "extends": "eslint:recommended",
-  "parserOptions": {
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
-    // Ваши правила здесь
-  },
-  "overrides": [
-    {
-      "files": ["*.js"],
-      "linterOptions": {
-        "reportUnusedDisableDirectives": true
+    "semi": "off",
+    "@typescript-eslint/semi": [ //подсвечивать как варнинг пропущенную ';' в коде
+                                 "warn"
+    ],
+    "@typescript-eslint/no-empty-interface": [ //Если пустой интерфей - задаем ошибку
+      "error",
+      {
+        "allowSingleExtends": true // исключение указывает, что если пустой интерфей наследует другой, то ошибки не будет
       }
-    }
+    ]
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "prettier/react",
+    "prettier/@typescript-eslint"
   ]
 }

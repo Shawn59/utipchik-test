@@ -12,6 +12,8 @@ export class ContentBaseStore {
 
   selectedFastFilterId = 0;
 
+  mediaCardNameKeyword = '';
+
   breadcrumbsList: IBreadcrumbsData[] = [
     {
       label: navigationRoutes[0].pageName,
@@ -24,6 +26,10 @@ export class ContentBaseStore {
     makeAutoObservable(this, { rootStore: false, breadcrumbsList: false });
   }
 
+  setMediaCardNameKeyword = (value: string) => {
+    this.mediaCardNameKeyword = value;
+  };
+
   setSelectedFastFilterId = (value: number) => {
     this.selectedFastFilterId = value;
   };
@@ -34,7 +40,7 @@ export class ContentBaseStore {
     });
   };
 
-  getMediaSearchList = (_keywords: string) => {
+  getMediaSearchList = () => {
     getMediaSearchListAPI().then((response: any) => {
       this.mediaSearchList = response.elements.map((item) => {
         return { id: item.id, label: item.name };
