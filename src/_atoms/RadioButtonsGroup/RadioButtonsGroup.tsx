@@ -18,13 +18,15 @@ interface IRadioButtonsGroupAtom {
 export const RadioButtonsGroupAtom: FC<IRadioButtonsGroupAtom> = (props) => {
   const { radioOptions, isAll = true, value = 'all', onChange } = props;
 
+  console.log(value);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange((event.target as HTMLInputElement).value);
   };
 
   return (
     <FormControl>
-      <RadioGroup row value={value} onChange={handleChange}>
+      <RadioGroup row value={value ? value : 'all'} onChange={handleChange}>
         {isAll && <FormControlLabel value={'all'} control={(<Radio />) as React.ReactElement} label={'Все'} />}
 
         {radioOptions.map((item) => {

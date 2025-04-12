@@ -17,6 +17,10 @@
   .sliderContainer {
     width: 100%;
     padding: $padding-8 42px $padding-16 22px;
+
+    .title {
+      text-align: center;
+    }
   }
 
   .radioGroupContainer {
