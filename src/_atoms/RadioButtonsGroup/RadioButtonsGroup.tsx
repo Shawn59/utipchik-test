@@ -3,17 +3,40 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import { FC } from 'react';
 
-export const RadioButtonsGroupAtom = () => {
+interface IRadioButtonsGroupAtom {
+  radioOptions: {
+    value: string | number;
+    label: string;
+  }[];
+  isAll?: boolean;
+  value: string | number;
+  onChange: (value: string | number) => void;
+}
+
+export const RadioButtonsGroupAtom: FC<IRadioButtonsGroupAtom> = (props) => {
+  const { radioOptions, isAll = true, value = 'all', onChange } = props;
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange((event.target as HTMLInputElement).value);
+  };
+
   return (
     <FormControl>
-      <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
-      <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
-        <FormControlLabel value="female" control={<Radio />} label="Female" />
-        <FormControlLabel value="male" control={<Radio />} label="Male" />
-        <FormControlLabel value="other" control={<Radio />} label="Other" />
-        <FormControlLabel value="disabled" disabled control={<Radio />} label="other" />
+      <RadioGroup row value={value} onChange={handleChange}>
+        {isAll && <FormControlLabel value={'all'} control={(<Radio />) as React.ReactElement} label={'Все'} />}
+
+        {radioOptions.map((item) => {
+          return (
+            <FormControlLabel
+              key={item.value}
+              value={item.value}
+              control={(<Radio />) as React.ReactElement}
+              label={item.label}
+            />
+          );
+        })}
       </RadioGroup>
     </FormControl>
   );

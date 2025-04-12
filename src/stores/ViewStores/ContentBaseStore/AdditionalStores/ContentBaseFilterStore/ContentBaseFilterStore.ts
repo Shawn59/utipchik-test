@@ -70,14 +70,8 @@ export class ContentBaseFiltersStore {
           errorMessage: '',
         },
 
-        startDate: {
-          value: '',
-          rules: 'required',
-          errorMessage: '',
-        },
-
-        endDate: {
-          value: '',
+        rangeDate: {
+          value: [null, null],
           rules: 'required',
           errorMessage: '',
         },

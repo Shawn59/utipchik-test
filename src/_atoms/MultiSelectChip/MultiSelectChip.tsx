@@ -7,12 +7,12 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
 import { Checkbox, ListItemText } from '@mui/material';
-import styles from './MultiSelectChipAtom.module.scss';
+import styles from './MultiSelectChip.module.scss';
 import { KeyboardArrowDown as KeyboardArrowDownIcon } from '@mui/icons-material';
 import classNames from 'classnames';
-import { IMultiSelectChipAtom } from './MultiSelectChipAtom.interfaces';
+import { IMultiSelectChipAtom } from './MultiSelectChip.interfaces';
 
-export const MultiSelectChipAtom: FC<IMultiSelectChipAtom> = (props) => {
+export const MultiSelectChip: FC<IMultiSelectChipAtom> = (props) => {
   const { options, onChange, value, label = '', className, ...rest } = props;
 
   const handleChange = (e: SelectChangeEvent<string[] | number[]>) => {

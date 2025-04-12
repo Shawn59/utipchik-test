@@ -5,9 +5,10 @@ import {
   RangeSliderAtom,
   SelectAtom,
   SwitchAtom,
-  MultiSelectChipAtom,
+  MultiSelectChip,
   AutocompleteAtom,
   IAutocompleteAtomOption,
+  RadioButtonsGroupAtom,
 } from '@atoms';
 import styles from './ContentBaseFilter.module.scss';
 
@@ -24,11 +25,11 @@ export const ContentBaseFilter = observer(() => {
     contentBaseFiltersStore.setFiledForm('screen', value);
   };
 
-  const handleChangeType = (value: string) => {
+  const handleChangeType = (value: string | number) => {
     contentBaseFiltersStore.setFiledForm('typeContent', value);
   };
 
-  const handleChangeStateModeration = (value: string) => {
+  const handleChangeStateModeration = (value: string | number) => {
     contentBaseFiltersStore.setFiledForm('stateModeration', value);
   };
 
@@ -38,6 +39,10 @@ export const ContentBaseFilter = observer(() => {
 
   const handleChangeUser = (option: IAutocompleteAtomOption | null) => {
     contentBaseFiltersStore.setUser(option);
+  };
+
+  const handleChangeRangeDate = (date: any) => {
+    contentBaseFiltersStore.setFiledForm('rangeDate', date);
   };
 
   return (
@@ -56,7 +61,7 @@ export const ContentBaseFilter = observer(() => {
               clearOnBlur
             />
 
-            <SelectAtom
+            {/*   <SelectAtom
               label={'Тип контента'}
               value={fields.typeContent.value}
               onChange={handleChangeType}
@@ -70,15 +75,43 @@ export const ContentBaseFilter = observer(() => {
               onChange={handleChangeStateModeration}
               options={contentBaseFiltersStore.stateModerationOptionList}
               isEmpty
-            />
+            />*/}
           </div>
 
           <div className={styles.inputContainer}>
-            <MultiSelectChipAtom
+            <MultiSelectChip
               value={fields.screen.value}
               label={'Разрешение'}
               onChange={handleChangeScreen}
               options={contentBaseFiltersStore.screenOptionList}
+            />
+          </div>
+
+          <div className={styles.radioGroupContainer}>
+            <div>{'Тип контента:'}</div>
+
+            <RadioButtonsGroupAtom
+              radioOptions={contentBaseFiltersStore.typeOptionList}
+              value={fields.typeContent.value}
+              onChange={handleChangeType}
+            />
+          </div>
+
+          <div className={styles.radioGroupContainer}>
+            <div>{'Состояние модерации:'}</div>
+
+            <RadioButtonsGroupAtom
+              radioOptions={contentBaseFiltersStore.stateModerationOptionList}
+              value={fields.stateModeration.value}
+              onChange={handleChangeStateModeration}
+            />
+          </div>
+
+          <div className={styles.inputContainer}>
+            <SwitchAtom
+              label={'Состояние трансляции'}
+              checked={fields.broadcastStatus.value}
+              onChange={handleChangeBroadcastStatus}
             />
           </div>
 
@@ -91,14 +124,6 @@ export const ContentBaseFilter = observer(() => {
               minValue={0}
               step={10}
               onChangeValue={handleChangeStartPeriodTime}
-            />
-          </div>
-
-          <div className={styles.inputContainer}>
-            <SwitchAtom
-              label={'Состояние трансляции'}
-              checked={fields.broadcastStatus.value}
-              onChange={handleChangeBroadcastStatus}
             />
           </div>
         </div>

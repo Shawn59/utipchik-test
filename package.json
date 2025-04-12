@@ -18,6 +18,7 @@
     "@mui/material": "^6.4.10",
     "autosuggest-highlight": "^3.3.4",
     "classnames": "^2.5.1",
+    "luxon": "^3.6.1",
     "mobx": "^6.13.7",
     "mobx-react-lite": "^4.1.0",
     "react": "^19.0.0",
@@ -28,9 +29,11 @@
     "@eslint/js": "^9.21.0",
     "@types/autosuggest-highlight": "^3.2.3",
     "@types/classnames": "^2.3.4",
+    "@types/luxon": "^3.6.2",
     "@types/node": "^22.14.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "@typescript-eslint/parser": "^8.29.1",
     "@vitejs/plugin-react-swc": "^3.8.0",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
@@ -41,7 +44,6 @@
     "sass-embedded": "^1.86.2",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.24.1",
-    "vite": "^6.2.0",
-    "@typescript-eslint/parser": "^8.29.1"
+    "vite": "^6.2.0"
   }
 }

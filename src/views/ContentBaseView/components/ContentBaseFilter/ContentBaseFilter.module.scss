@@ -18,4 +18,12 @@
     width: 100%;
     padding: $padding-8 42px $padding-16 22px;
   }
+
+  .radioGroupContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-8;
+    width: 100%;
+    padding: $padding-8;
+  }
 }
