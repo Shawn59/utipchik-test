@@ -1,3 +1,28 @@
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'prettier/@typescript-eslint',
+    'prettier/react',
+    'plugin:prettier/recommended',
+  ],
+
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
+
+  rules: {
+    camelcase: 'error',
+    'react.props-types': 0,
+    curly: 2,
+    'no-console': 2,
+    quotes: ['error', 'single'],
+  },
+};
+
+/*
 {
   "env": {
     "browser": true,
@@ -13,10 +38,7 @@
   },
   "overrides": [
     {
-      "files": ["*.js"],
-      "linterOptions": {
-        "reportUnusedDisableDirectives": true
-      }
+      "files": ["*.js"]
     }
   ]
-}
+}*/

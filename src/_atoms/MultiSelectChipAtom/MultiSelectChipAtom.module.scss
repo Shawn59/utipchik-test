@@ -1,0 +1,46 @@
+@import "../../../styles/varibles";
+
+.multi-select-chip-atom-container {
+  &.MuiFormControl-root {
+    width: 100%;
+    margin: 0;
+
+    .MuiInputLabel-root {
+      color: $colorDeepGrey_300;
+
+      &.Mui-focused {
+        color: #1976d2;
+      }
+    }
+
+    .MuiSelect-select {
+      color: $colorDarkTurquoise_900;
+      padding: 14px 32px 14px 14px;
+      min-height: 26px;
+    }
+
+    .MuiSvgIcon-root {
+      fill: $colorDarkTurquoise_900;
+    }
+
+    .MuiChip-root {
+      height: 26px;
+
+      .MuiChip-label {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.multi-select-option-item {
+  .Mui-checked {
+    .MuiSvgIcon-root {
+      fill: $colorBlue_900;
+    }
+  }
+
+  .MuiTypography-root {
+    font-size: 16px;
+  }
+}
