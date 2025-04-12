@@ -1,44 +1,27 @@
-module.exports = {
-  parser: '@typescript-eslint/parser',
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'prettier/@typescript-eslint',
-    'prettier/react',
-    'plugin:prettier/recommended',
-  ],
-
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
-  },
-
-  rules: {
-    camelcase: 'error',
-    'react.props-types': 0,
-    curly: 2,
-    'no-console': 2,
-    quotes: ['error', 'single'],
-  },
-};
-
-/*
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "extends": "eslint:recommended",
-  "parserOptions": {
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
-    // Ваши правила здесь
+    "semi": "off",
+    "@typescript-eslint/semi": [ //подсвечивать как варнинг пропущенную ';' в коде
+                                 "warn"
+    ],
+    "@typescript-eslint/no-empty-interface": [ //Если пустой интерфей - задаем ошибку
+      "error",
+      {
+        "allowSingleExtends": true // исключение указывает, что если пустой интерфей наследует другой, то ошибки не будет
+      }
+    ]
   },
-  "overrides": [
-    {
-      "files": ["*.js"]
-    }
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "prettier/react",
+    "prettier/@typescript-eslint"
   ]
-}*/
+}

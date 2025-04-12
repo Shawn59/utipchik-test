@@ -1,46 +1,48 @@
-@import "../../../styles/varibles";
+@use "src/styles/index" as *;
 
-.multi-select-chip-atom-container {
-  &.MuiFormControl-root {
+.multiSelectChipAtomContainer {
+  width: 100%;
+
+  :global(&.MuiFormControl-root) {
     width: 100%;
     margin: 0;
 
-    .MuiInputLabel-root {
+    :global(.MuiInputLabel-root) {
       color: $colorDeepGrey_300;
 
-      &.Mui-focused {
+      :global(&.Mui-focused) {
         color: #1976d2;
       }
     }
 
-    .MuiSelect-select {
+    :global(.MuiSelect-select) {
       color: $colorDarkTurquoise_900;
       padding: 14px 32px 14px 14px;
       min-height: 26px;
     }
 
-    .MuiSvgIcon-root {
+    :global(.MuiSvgIcon-root) {
       fill: $colorDarkTurquoise_900;
     }
 
-    .MuiChip-root {
+    :global(.MuiChip-root) {
       height: 26px;
 
-      .MuiChip-label {
+      :global(.MuiChip-label) {
         font-size: 16px;
       }
     }
   }
 }
 
-.multi-select-option-item {
-  .Mui-checked {
-    .MuiSvgIcon-root {
+.multiSelectOptionItem {
+  :global(.Mui-checked) {
+    :global(.MuiSvgIcon-root) {
       fill: $colorBlue_900;
     }
   }
 
-  .MuiTypography-root {
+  :global(.MuiTypography-root) {
     font-size: 16px;
   }
 }

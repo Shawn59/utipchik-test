@@ -4,7 +4,8 @@ import {
   AutocompleteRenderOptionState,
   Box,
   InputAdornment,
-  TextField, Typography,
+  TextField,
+  Typography,
 } from '@mui/material';
 import { FC } from 'react';
 import { Search as SearchIcon } from '@mui/icons-material';
@@ -14,7 +15,7 @@ import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import * as React from 'react';
 
-interface IAutocompleteAtomOption {
+export interface IAutocompleteAtomOption {
   id: number;
   label: string;
 
@@ -23,14 +24,47 @@ interface IAutocompleteAtomOption {
 
 interface IAutocompleteAtom {
   label: string;
-  onInputChange: (keywords: string) => void;
   options: IAutocompleteAtomOption[];
+  inputValue: string;
+  onInputValueChange: (inputValue: string) => void;
+  onSearchInputValue?: () => void;
   isSearchIcon?: boolean;
   className?: string;
+  noOptionsText?: string;
+  multiple?: boolean;
+  disablePortal?: boolean;
+  selectOnFocus?: boolean;
+  clearOnBlur?: boolean;
+  value?: any;
+  defaultValue?: any;
+  disableInput?: boolean;
+  error?: boolean;
+  helperText?: string;
+  disabled?: boolean;
+  onGetOptions?: () => void;
+  onChange?: (option: IAutocompleteAtomOption | null) => void;
 }
 
 export const AutocompleteAtom: FC<IAutocompleteAtom> = (props) => {
-  const { isSearchIcon, label, className = '', onInputChange, options } = props;
+  const {
+    isSearchIcon,
+    label,
+    inputValue,
+    className = '',
+    onInputValueChange,
+    options,
+    onChange,
+    onSearchInputValue,
+    onGetOptions,
+    ...rest
+  } = props;
+
+  const handleKeyDown = (e: any) => {
+    if (onSearchInputValue && e.key === 'Enter') {
+      e.defaultMuiPrevented = true;
+      onSearchInputValue();
+    }
+  };
 
   const handleRenderInput = (params: AutocompleteRenderInputParams) => {
     if (isSearchIcon) {
@@ -46,14 +80,16 @@ export const AutocompleteAtom: FC<IAutocompleteAtom> = (props) => {
 
   const handleInputChange = (_e: React.SyntheticEvent, keywords: string) => {
     //По дефолту запрос на получение опций нужно прописывать в пропсе onInputValueChange
-    onInputChange(keywords);
-
-    // console.log('reason = ', reason);
+    onInputValueChange(keywords);
 
     // Метод для debouncing (дергает запрос по истечению последнего события). Тогда запрос на опции передаем в пропсе onGetOptions
     /* if (delayedQuery) {
        delayedQuery();
      }*/
+
+    if (onGetOptions) {
+      onGetOptions();
+    }
   };
 
   const handleFilterOptions = (option) => {
@@ -98,9 +134,16 @@ export const AutocompleteAtom: FC<IAutocompleteAtom> = (props) => {
     );
   };
 
+  const handleChange = (_event: any, option: IAutocompleteAtomOption | null) => {
+    if (onChange) {
+      onChange(option);
+    }
+  };
+
   return (
     <Autocomplete
-      className={classNames(styles.autocompleteAtom, className)}
+      inputValue={inputValue}
+      className={classNames(styles.autocompleteAtom, className as any)}
       renderInput={handleRenderInput}
       onInputChange={handleInputChange}
       options={options ?? []}
@@ -108,6 +151,13 @@ export const AutocompleteAtom: FC<IAutocompleteAtom> = (props) => {
       getOptionLabel={(option) => option.label}
       filterOptions={handleFilterOptions}
       filterSelectedOptions
+      onChange={onChange ? (handleChange as any) : null}
+      isOptionEqualToValue={(option, selectedOption) => {
+        return option.value === selectedOption.value;
+      }} // задачем сравнение опций
+      clearText={'Очистить'}
+      onKeyDown={handleKeyDown}
+      {...rest}
     />
   );
 };

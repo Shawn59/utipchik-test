@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
 import { useStoresHook } from '@hooks';
-import { AutocompleteAtom, ButtonAtom, ChipAtom } from '@atoms';
+import { AutocompleteAtom, ButtonAtom, ChipAtom, IAutocompleteAtomOption } from '@atoms';
 import { PreloaderFullContentMol } from '@molecules';
 import styles from './ContentBaseView.module.scss';
 import { PageContentLayout } from '@layouts';
@@ -20,6 +20,12 @@ export const ContentBaseView = observer(() => {
     };
   }, []);
 
+  const setLocation = (_option: IAutocompleteAtomOption | null) => {
+    //const id = option.value;
+    /* stocksStore.clearKeyword();
+    navigate(`/stocks/operations/${id}`);*/
+  };
+
   return (
     <PageContentLayout
       Header={
@@ -33,7 +39,11 @@ export const ContentBaseView = observer(() => {
                 options={contentBaseStore.mediaSearchList}
                 className={styles.searchInput}
                 isSearchIcon
-                onInputChange={contentBaseStore.getMediaSearchList}
+                inputValue={contentBaseStore.mediaCardNameKeyword}
+                onInputValueChange={contentBaseStore.setMediaCardNameKeyword}
+                onSearchInputValue={contentBaseStore.getMediaSearchList} // нужен другой метод, для выозова карточке с учетом введенного значения
+                onChange={setLocation}
+                onGetOptions={contentBaseStore.getMediaSearchList}
               />
 
               <ContentBaseFilter />

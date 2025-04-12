@@ -18,7 +18,7 @@ export const RangeSliderAtom: FC<IRangeSliderAtom> = (props) => {
   const getMarks = useMemo(() => {
     const marks: Mark[] = [];
 
-    for (let i = 0; i <= maxValue; i += 10) {
+    for (let i = 0; i <= maxValue; i += step) {
       marks.push({
         value: i,
         label: i === 0 || i === maxValue ? (i === maxValue ? `${i}+` : `${i}`) : '',
@@ -29,7 +29,7 @@ export const RangeSliderAtom: FC<IRangeSliderAtom> = (props) => {
   }, []);
 
   const valueLabelFormat = (value: number) => {
-    return value === 180 ? `${value}+` : `${value}`;
+    return value === maxValue ? `${value}+` : `${value}`;
   };
 
   const handleChange = (_event: Event, newValue: number[], activeThumb: number) => {

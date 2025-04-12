@@ -13,7 +13,7 @@ export const SelectAtom: FC<ISelectAtom> = (props) => {
     onChange(event.target.value);
   };
   return (
-    <FormControl className={classNames(styles.selectAtomContainer, className)} sx={{ m: 1 }}>
+    <FormControl className={classNames(styles.selectAtomContainer, className as any)}>
       <InputLabel>{label}</InputLabel>
 
       <Select
