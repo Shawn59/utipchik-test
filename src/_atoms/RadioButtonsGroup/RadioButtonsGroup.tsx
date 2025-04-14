@@ -18,8 +18,6 @@ interface IRadioButtonsGroupAtom {
 export const RadioButtonsGroupAtom: FC<IRadioButtonsGroupAtom> = (props) => {
   const { radioOptions, isAll = true, value = 'all', onChange } = props;
 
-  console.log(value);
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange((event.target as HTMLInputElement).value);
   };

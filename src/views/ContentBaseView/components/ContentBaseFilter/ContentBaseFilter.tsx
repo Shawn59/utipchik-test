@@ -9,11 +9,21 @@ import {
   AutocompleteAtom,
   IAutocompleteAtomOption,
   RadioButtonsGroupAtom,
+  IAutocompleteMultiAtomOption,
+  AutocompleteMultiAtom,
+  DatePickerRangeAtom,
 } from '@atoms';
 import styles from './ContentBaseFilter.module.scss';
+import { useEffect } from 'react';
 
 export const ContentBaseFilter = observer(() => {
   const { contentBaseFiltersStore } = useStoresHook();
+
+  useEffect(() => {
+    return () => {
+      contentBaseFiltersStore.clearData();
+    };
+  }, []);
 
   const { isValidForm, fields } = contentBaseFiltersStore?.form;
 
@@ -43,6 +53,10 @@ export const ContentBaseFilter = observer(() => {
 
   const handleChangeRangeDate = (date: any) => {
     contentBaseFiltersStore.setFiledForm('rangeDate', date);
+  };
+
+  const handleChangeHashTagsOptions = (options: IAutocompleteMultiAtomOption[]) => {
+    contentBaseFiltersStore.setFiledForm('hashTags', options);
   };
 
   return (
@@ -79,12 +93,30 @@ export const ContentBaseFilter = observer(() => {
           </div>
 
           <div className={styles.inputContainer}>
+            <AutocompleteMultiAtom
+              label={'Хештеги'}
+              options={contentBaseFiltersStore.hashTagList}
+              inputValue={contentBaseFiltersStore.hashTagKeyword}
+              onInputValueChange={contentBaseFiltersStore.setHashTagKeyword}
+              onGetOptions={contentBaseFiltersStore.getOptionsHashTags}
+              onChange={handleChangeHashTagsOptions}
+              value={fields.hashTags.value}
+            />
+          </div>
+
+          <div className={styles.inputContainer}>
             <MultiSelectChip
               value={fields.screen.value}
               label={'Разрешение'}
               onChange={handleChangeScreen}
               options={contentBaseFiltersStore.screenOptionList}
             />
+          </div>
+
+          <div className={styles.dateContainer}>
+            <div>{'Дата изменения: '}</div>
+
+            <DatePickerRangeAtom onChange={handleChangeRangeDate} rangeValue={fields.rangeDate.value} />
           </div>
 
           <div className={styles.radioGroupContainer}>

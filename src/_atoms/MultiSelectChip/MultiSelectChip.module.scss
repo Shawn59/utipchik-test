@@ -29,7 +29,7 @@
       height: 26px;
 
       :global(.MuiChip-label) {
-        font-size: 16px;
+        font-size: 14px;
       }
     }
   }
@@ -37,12 +37,12 @@
 
 .multiSelectOptionItem {
   :global(.Mui-checked) {
-    :global(.MuiSvgIcon-root) {
+   /* :global(.MuiSvgIcon-root) {
       fill: $colorBlue_900;
-    }
+    }*/
   }
 
   :global(.MuiTypography-root) {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
