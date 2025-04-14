@@ -1,6 +1,6 @@
 import { rootStoreType } from '../../../../RootStore';
 import { makeAutoObservable } from 'mobx';
-import { IAutocompleteAtomOption } from '@atoms';
+import { IAutocompleteAtomOption, IAutocompleteMultiAtomOption } from '@atoms';
 import { IOptions } from '../../../../../_atoms/Select/Select.interfaces';
 
 interface IForm {
@@ -53,6 +53,9 @@ export class ContentBaseFiltersStore {
   userList: IAutocompleteAtomOption[] = [];
   userSelectedOption: IAutocompleteAtomOption | null = null;
 
+  hashTagKeyword = '';
+  hashTagList: IAutocompleteMultiAtomOption[] = [];
+
   constructor(rootStore: rootStoreType) {
     this.rootStore = rootStore;
 
@@ -101,7 +104,7 @@ export class ContentBaseFiltersStore {
         },
 
         hashTags: {
-          value: '',
+          value: [],
           rules: 'required',
           errorMessage: '',
         },
@@ -132,9 +135,9 @@ export class ContentBaseFiltersStore {
     };
 
     this.userList = [
-      { id: 1, label: 'Петров. В.А' },
-      { id: 2, label: 'Тимуров. В.А' },
-      { id: 3, label: 'Пупкин. В.А' },
+      { value: 1, label: 'Петров. В.А' },
+      { value: 2, label: 'Тимуров. В.А' },
+      { value: 3, label: 'Пупкин. В.А' },
     ];
 
     /*  getProductsAPI(params)
@@ -147,6 +150,29 @@ export class ContentBaseFiltersStore {
     /*} else {
       this.userList = [];
     }*/
+  };
+
+  setHashTagKeyword = (keyword: string) => {
+    this.hashTagKeyword = keyword;
+  };
+
+  getOptionsHashTags = () => {
+    /*if (this.hashTagKeyword && this.hashTagKeyword.trim().length >= 2) {*/
+    const params = {
+      name: this.hashTagKeyword,
+    };
+
+    this.hashTagList = [
+      { value: 1, label: 'хеш-1' },
+      { value: 2, label: 'хеш-2' },
+      { value: 3, label: 'хеш-3' },
+      { value: 4, label: 'хеш-4' },
+      { value: 5, label: 'хеш-5' },
+      { value: 6, label: 'хеш-6' },
+      { value: 7, label: 'хеш-7' },
+      { value: 8, label: 'хеш-8' },
+      { value: 9, label: 'хеш-9' },
+    ];
   };
 
   setUsersKeyword = (value: string) => {

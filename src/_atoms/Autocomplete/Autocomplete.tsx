@@ -16,7 +16,7 @@ import match from 'autosuggest-highlight/match';
 import * as React from 'react';
 
 export interface IAutocompleteAtomOption {
-  id: number;
+  value: number;
   label: string;
 
   [key: string]: any;
@@ -56,6 +56,7 @@ export const AutocompleteAtom: FC<IAutocompleteAtom> = (props) => {
     onChange,
     onSearchInputValue,
     onGetOptions,
+    noOptionsText = 'Ничего не найдено',
     ...rest
   } = props;
 
@@ -98,6 +99,7 @@ export const AutocompleteAtom: FC<IAutocompleteAtom> = (props) => {
 
   const handleRenderOptions = (props, option, { inputValue }: AutocompleteRenderOptionState) => {
     const { key, ...optionProps } = props;
+
     const matches = match(option.label.toLowerCase(), inputValue, {
       findAllOccurrences: true,
       insideWords: true,
@@ -110,7 +112,7 @@ export const AutocompleteAtom: FC<IAutocompleteAtom> = (props) => {
     };
 
     return (
-      <Box key={option.id} component="li" sx={{ cursor: 'pointer' }} {...optionProps}>
+      <Box key={key} component="li" sx={{ cursor: 'pointer' }} {...optionProps}>
         <Box
           sx={{
             padding: '10px 0',
@@ -157,6 +159,7 @@ export const AutocompleteAtom: FC<IAutocompleteAtom> = (props) => {
       }} // задачем сравнение опций
       clearText={'Очистить'}
       onKeyDown={handleKeyDown}
+      noOptionsText={noOptionsText}
       {...rest}
     />
   );

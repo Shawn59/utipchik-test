@@ -9,6 +9,8 @@ import {
   AutocompleteAtom,
   IAutocompleteAtomOption,
   RadioButtonsGroupAtom,
+  IAutocompleteMultiAtomOption,
+  AutocompleteMultiAtom,
 } from '@atoms';
 import styles from './ContentBaseFilter.module.scss';
 
@@ -45,6 +47,10 @@ export const ContentBaseFilter = observer(() => {
     contentBaseFiltersStore.setFiledForm('rangeDate', date);
   };
 
+  const handleChangeHashTagsOptions = (options: IAutocompleteMultiAtomOption[]) => {
+    contentBaseFiltersStore.setFiledForm('hashTags', options);
+  };
+
   return (
     <div className={styles.contentBaseFilter}>
       <FilterComp onSubmit={contentBaseFiltersStore.submit} onClear={contentBaseFiltersStore.clear}>
@@ -76,6 +82,18 @@ export const ContentBaseFilter = observer(() => {
               options={contentBaseFiltersStore.stateModerationOptionList}
               isEmpty
             />*/}
+          </div>
+
+          <div className={styles.inputContainer}>
+            <AutocompleteMultiAtom
+              label={'Хештеги'}
+              options={contentBaseFiltersStore.hashTagList}
+              inputValue={contentBaseFiltersStore.hashTagKeyword}
+              onInputValueChange={contentBaseFiltersStore.setHashTagKeyword}
+              onGetOptions={contentBaseFiltersStore.getOptionsHashTags}
+              onChange={handleChangeHashTagsOptions}
+              value={fields.hashTags.value}
+            />
           </div>
 
           <div className={styles.inputContainer}>

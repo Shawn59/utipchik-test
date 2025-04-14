@@ -1,8 +1,16 @@
 @use 'src/styles/index' as *;
 
-.autocompleteAtom {
+.autocompleteMultiAtom {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-8;
   width: 100%;
+
   .searchIcon {
     fill: $colorDeepGrey_400;
+  }
+
+  .helperError {
+    color: $colorRed_900;
   }
 }

@@ -8,9 +8,9 @@
   :global(.MuiInputLabel-root) {
     font-family: $fontRegular;
 
-    :global(&.Mui-focused) {
+   /* :global(&.Mui-focused) {
       color: #1976d2;
-    }
+    }*/
   }
 
   :global(.MuiSelect-select) {
