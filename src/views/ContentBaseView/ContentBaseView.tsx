@@ -14,10 +14,6 @@ export const ContentBaseView = observer(() => {
 
   useEffect(() => {
     contentBaseStore.getBaseContentMD();
-
-    return () => {
-      contentBaseFiltersStore.clearData();
-    };
   }, []);
 
   const setLocation = (_option: IAutocompleteAtomOption | null) => {
@@ -58,22 +54,26 @@ export const ContentBaseView = observer(() => {
       Content={
         <div className={styles.contentBaseView}>
           {contentBaseStore.contentBaseData ? (
-            <div className={styles.fastFiltersContainer}>
-              {contentBaseStore.contentBaseData.fastFilters.map((item) => {
-                const isSelected = item.id == contentBaseStore.selectedFastFilterId;
+            <>
+              <div className={styles.fastFiltersContainer}>
+                {contentBaseStore.contentBaseData.fastFilters.map((item) => {
+                  const isSelected = item.id == contentBaseStore.selectedFastFilterId;
 
-                return (
-                  <ChipAtom
-                    key={item.id}
-                    isSelected={isSelected}
-                    theme={'Outlined'}
-                    onClick={contentBaseStore.setSelectedFastFilterId}
-                    value={item.id}
-                    label={`${item.name} ${item.count}`}
-                  />
-                );
-              })}
-            </div>
+                  return (
+                    <ChipAtom
+                      key={item.id}
+                      isSelected={isSelected}
+                      theme={'Outlined'}
+                      onClick={contentBaseStore.setSelectedFastFilterId}
+                      value={item.id}
+                      label={`${item.name} ${item.count}`}
+                    />
+                  );
+                })}
+              </div>
+
+              <div></div>
+            </>
           ) : (
             <PreloaderFullContentMol />
           )}

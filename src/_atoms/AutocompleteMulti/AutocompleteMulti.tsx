@@ -105,7 +105,7 @@ export const AutocompleteMultiAtom: FC<IAutocompleteMultiAtom> = (props) => {
   };
 
   const renderOptions = (
-    props: HTMLAttributes<HTMLLIElement>,
+    props: any,
     option: IAutocompleteMultiAtomOption,
     { inputValue, selected }: AutocompleteRenderOptionState,
   ) => {
@@ -159,7 +159,7 @@ export const AutocompleteMultiAtom: FC<IAutocompleteMultiAtom> = (props) => {
     <div className={classNames(styles.autocompleteMultiAtom, className as any)}>
       <Autocomplete
         multiple
-        disableCloseOnSelect
+        /*disableCloseOnSelect*/
         inputValue={inputValue}
         onInputChange={handleInputChange}
         onChange={onChange ? (handleChange as any) : null}
@@ -167,7 +167,7 @@ export const AutocompleteMultiAtom: FC<IAutocompleteMultiAtom> = (props) => {
         popupIcon={<KeyboardArrowDownIcon />}
         noOptionsText={noOptionsText}
         options={options}
-        getOptionLabel={(option) => option.label}
+        /*getOptionLabel={(option) => option.label as string}*/
         renderInput={renderInput}
         renderOption={renderOptions}
         filterOptions={handleFilterOptions}

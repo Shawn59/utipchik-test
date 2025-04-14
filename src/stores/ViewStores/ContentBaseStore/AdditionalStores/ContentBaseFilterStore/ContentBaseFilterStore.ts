@@ -74,7 +74,13 @@ export class ContentBaseFiltersStore {
         },
 
         rangeDate: {
-          value: [null, null],
+          value: [
+            {
+              startDate: new Date(),
+              endDate: null,
+              key: 'selection',
+            },
+          ],
           rules: 'required',
           errorMessage: '',
         },
