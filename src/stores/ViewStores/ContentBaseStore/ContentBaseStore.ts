@@ -30,8 +30,8 @@ export class ContentBaseStore {
     this.mediaCardNameKeyword = value;
   };
 
-  setSelectedFastFilterId = (value: number) => {
-    this.selectedFastFilterId = value;
+  setSelectedFastFilterId = (value: number | string) => {
+    this.selectedFastFilterId = value as number;
   };
 
   getBaseContentMD = () => {

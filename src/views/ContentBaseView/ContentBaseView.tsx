@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useStoresHook } from '@hooks';
 import { AutocompleteAtom, ButtonAtom, ChipAtom, IAutocompleteAtomOption } from '@atoms';
 import { PreloaderFullContentMol } from '@molecules';
@@ -54,7 +54,7 @@ export const ContentBaseView = observer(() => {
       Content={
         <div className={styles.contentBaseView}>
           {contentBaseStore.contentBaseData ? (
-            <>
+            <div className={styles.filterContainer}>
               <div className={styles.fastFiltersContainer}>
                 {contentBaseStore.contentBaseData.fastFilters.map((item) => {
                   const isSelected = item.id == contentBaseStore.selectedFastFilterId;
@@ -72,8 +72,27 @@ export const ContentBaseView = observer(() => {
                 })}
               </div>
 
-              <div></div>
-            </>
+              {!!contentBaseFiltersStore.filterChipsList.length && (
+                <div className={styles.filtersChipContainer}>
+                  {contentBaseFiltersStore.filterChipsList.map((item) => {
+                    return (
+                      <ChipAtom
+                        key={item.key}
+                        theme={'Secondary'}
+                        size={'small'}
+                        value={item.key}
+                        label={
+                          <>
+                            <span className={styles.label}>{`${item.label}:`}</span> <span>{item.value}</span>
+                          </>
+                        }
+                        onDelete={contentBaseFiltersStore.clearFilterForKey}
+                      />
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           ) : (
             <PreloaderFullContentMol />
           )}

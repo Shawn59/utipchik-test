@@ -74,22 +74,6 @@ export const ContentBaseFilter = observer(() => {
               value={contentBaseFiltersStore.userSelectedOption}
               clearOnBlur
             />
-
-            {/*   <SelectAtom
-              label={'Тип контента'}
-              value={fields.typeContent.value}
-              onChange={handleChangeType}
-              options={contentBaseFiltersStore.typeOptionList}
-              isEmpty
-            />
-
-            <SelectAtom
-              label={'Состояние модерации'}
-              value={fields.stateModeration.value}
-              onChange={handleChangeStateModeration}
-              options={contentBaseFiltersStore.stateModerationOptionList}
-              isEmpty
-            />*/}
           </div>
 
           <div className={styles.inputContainer}>

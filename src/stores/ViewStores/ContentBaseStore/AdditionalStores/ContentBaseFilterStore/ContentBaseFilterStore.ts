@@ -1,7 +1,8 @@
 import { rootStoreType } from '../../../../RootStore';
 import { makeAutoObservable } from 'mobx';
-import { IAutocompleteAtomOption, IAutocompleteMultiAtomOption } from '@atoms';
+import { IAutocompleteAtomOption, IAutocompleteMultiAtomOption, IChipAtomValue } from '@atoms';
 import { IOptions } from '../../../../../_atoms/Select/Select.interfaces';
+import { format } from 'date-fns';
 
 interface IForm {
   fields: {
@@ -13,6 +14,29 @@ interface IForm {
     };
   };
   isValidForm: boolean;
+}
+
+interface IFilterChip {
+  key: string;
+  label: string;
+  value: string;
+}
+
+interface INTERFACE_FILTER_DEFAULT_VALUE {
+  periodTime: number[];
+  rangeDate: [
+    {
+      startDate: any;
+      endDate: any;
+      key: 'selection';
+    },
+  ];
+  userId: string;
+  typeContent: string;
+  screen: number[];
+  broadcastStatus: boolean;
+  hashTags: IAutocompleteMultiAtomOption[];
+  stateModeration: string;
 }
 
 export class ContentBaseFiltersStore {
@@ -36,6 +60,18 @@ export class ContentBaseFiltersStore {
     { value: 8, label: '1450x800' },
   ];
 
+  hashCommonTagList: IOptions[] = [
+    { value: 1, label: 'хеш-1' },
+    { value: 2, label: 'хеш-2' },
+    { value: 3, label: 'хеш-3' },
+    { value: 4, label: 'хеш-4' },
+    { value: 5, label: 'хеш-5' },
+    { value: 6, label: 'хеш-6' },
+    { value: 7, label: 'хеш-7' },
+    { value: 8, label: 'хеш-8' },
+    { value: 9, label: 'хеш-9' },
+  ];
+
   typeOptionList = [
     { value: 1, label: 'Онлайн' },
     { value: 2, label: 'Офлайн' },
@@ -56,67 +92,90 @@ export class ContentBaseFiltersStore {
   hashTagKeyword = '';
   hashTagList: IAutocompleteMultiAtomOption[] = [];
 
+  filterChipsList: IFilterChip[] = [];
+
+  FILTER_DEFAULT_VALUE: INTERFACE_FILTER_DEFAULT_VALUE = {
+    periodTime: [0, 180],
+    rangeDate: [
+      {
+        startDate: new Date(),
+        endDate: null,
+        key: 'selection',
+      },
+    ],
+    userId: '',
+    typeContent: '',
+    screen: [],
+    broadcastStatus: false,
+    hashTags: [], //тип IAutocompleteMultiAtomOption[]
+    stateModeration: '',
+  };
+
   constructor(rootStore: rootStoreType) {
     this.rootStore = rootStore;
 
     this.initForm();
 
-    makeAutoObservable(this, { rootStore: false });
+    makeAutoObservable(this, { rootStore: false, FILTER_DEFAULT_VALUE: false });
   }
+
+  clearFilterForKey = (key: IChipAtomValue) => {
+    this.form.fields[key].value = this.FILTER_DEFAULT_VALUE[key];
+
+    if (key === 'userId') {
+      this.userSelectedOption = null;
+    }
+
+    this.setFilterChipsData();
+  };
 
   initForm = () => {
     this.form = {
       fields: {
         periodTime: {
-          value: [0, 180],
+          value: this.FILTER_DEFAULT_VALUE.periodTime,
           rules: 'required',
           errorMessage: '',
         },
 
         rangeDate: {
-          value: [
-            {
-              startDate: new Date(),
-              endDate: null,
-              key: 'selection',
-            },
-          ],
+          value: this.FILTER_DEFAULT_VALUE.rangeDate,
           rules: 'required',
           errorMessage: '',
         },
 
         userId: {
-          value: '',
+          value: this.FILTER_DEFAULT_VALUE.userId,
           rules: 'required',
           errorMessage: '',
         },
 
         typeContent: {
-          value: '',
+          value: this.FILTER_DEFAULT_VALUE.typeContent,
           rules: 'required',
           errorMessage: '',
         },
 
         screen: {
-          value: [],
+          value: this.FILTER_DEFAULT_VALUE.screen,
           rules: 'required',
           errorMessage: '',
         },
 
         broadcastStatus: {
-          value: false,
+          value: this.FILTER_DEFAULT_VALUE.broadcastStatus,
           rules: 'required',
           errorMessage: '',
         },
 
         hashTags: {
-          value: [],
+          value: this.FILTER_DEFAULT_VALUE.hashTags,
           rules: 'required',
           errorMessage: '',
         },
 
         stateModeration: {
-          value: '',
+          value: this.FILTER_DEFAULT_VALUE.stateModeration,
           rules: 'required',
           errorMessage: '',
         },
@@ -195,10 +254,146 @@ export class ContentBaseFiltersStore {
     this.initForm();
   };
 
-  submit = () => {};
+  submit = () => {
+    this.setFilterChipsData();
+  };
 
   clear = () => {
     this.initForm();
     this.userSelectedOption = null;
+    this.filterChipsList = [];
+  };
+
+  setFilterChipsData = () => {
+    const { fields } = this.form;
+
+    const _filterChipsList: IFilterChip[] = [];
+
+    Object.entries(fields).forEach(([key, item]) => {
+      switch (key) {
+        case 'periodTime': {
+          if (
+            item.value[0] !== this.FILTER_DEFAULT_VALUE[key][0] ||
+            item.value[1] !== this.FILTER_DEFAULT_VALUE[key][1]
+          )
+            _filterChipsList.push({
+              key: key,
+              label: 'Длительность',
+              value: `от ${item.value[0]} до ${item.value[1]}`,
+            });
+          break;
+        }
+        case 'rangeDate': {
+          if (
+            item.value[0].startDate !== this.FILTER_DEFAULT_VALUE[key][0].startDate ||
+            item.value[0].endDate !== this.FILTER_DEFAULT_VALUE[key][0].endDate
+          )
+            _filterChipsList.push({
+              key: key,
+              label: 'Дата',
+              value: `с ${format(item.value[0].startDate as any, 'dd.MM.yyyy')} по ${format(
+                item.value[0].endDate as any,
+                'dd.MM.yyyy',
+              )}`,
+            });
+          break;
+        }
+
+        case 'userId': {
+          if (item.value !== this.FILTER_DEFAULT_VALUE[key]) {
+            const user = this.userList.find((userItem) => userItem.value === item.value);
+
+            if (user) {
+              _filterChipsList.push({
+                key: key,
+                label: 'Пользователь',
+                value: user.label,
+              });
+            }
+          }
+          break;
+        }
+
+        case 'typeContent': {
+          if (item.value !== this.FILTER_DEFAULT_VALUE[key]) {
+            const type = this.typeOptionList.find((typeItem) => typeItem.value == +item.value);
+
+            if (type) {
+              _filterChipsList.push({
+                key: key,
+                label: 'Тип контента',
+                value: type.label,
+              });
+            }
+          }
+          break;
+        }
+
+        case 'stateModeration': {
+          if (item.value !== this.FILTER_DEFAULT_VALUE[key]) {
+            const stateModeration = this.stateModerationOptionList.find(
+              (stateModerationItem) => stateModerationItem.value === +item.value,
+            );
+
+            if (stateModeration) {
+              _filterChipsList.push({
+                key: key,
+                label: 'Состояние модерации',
+                value: stateModeration.label,
+              });
+            }
+          }
+          break;
+        }
+
+        case 'broadcastStatus': {
+          if (item.value !== this.FILTER_DEFAULT_VALUE[key]) {
+            _filterChipsList.push({
+              key: key,
+              label: 'Состояние трансляции',
+              value: 'Активно',
+            });
+          }
+          break;
+        }
+
+        case 'screen': {
+          if (item.value.length > 0) {
+            const str = this.screenOptionList
+              .filter((screenItem) => item.value.includes(screenItem.value))
+              .map((screenFilteredItem) => screenFilteredItem.label);
+
+            _filterChipsList.push({
+              key: key,
+              label: 'Разрешение',
+              value: str.length <= 3 ? str.join(';') : `${str.length} шт.`,
+            });
+          }
+          break;
+        }
+
+        case 'hashTags': {
+          if (item.value.length > 0) {
+            const valueList = item.value.map((hashItem) => hashItem.value);
+
+            const str = this.hashCommonTagList
+              .filter((hashTagItem) => valueList.includes(hashTagItem.value))
+              .map((hashTagFilteredItem) => hashTagFilteredItem.label);
+
+            _filterChipsList.push({
+              key: key,
+              label: 'Хештеги',
+              value: str.length <= 3 ? str.join(';') : `${str.length} шт.`,
+            });
+          }
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    });
+
+    this.filterChipsList = _filterChipsList;
   };
 }

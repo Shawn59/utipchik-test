@@ -43,6 +43,14 @@ export const FilterComp: FC<IFilterComp> = observer((props) => {
     handleOpen();
   };
 
+  const handleClear = () => {
+    handleOnClose();
+
+    if (onClear) {
+      onClear();
+    }
+  };
+
   return (
     <div className={styles.filterComContainer}>
       <ButtonAtom
@@ -61,7 +69,7 @@ export const FilterComp: FC<IFilterComp> = observer((props) => {
         dialogContent={children}
         dialogAction={
           <>
-            <ButtonAtom label={'Сбросить'} theme={'Ternary'} onClick={onClear} disabled={disabledBtn} />
+            <ButtonAtom label={'Сбросить'} theme={'Ternary'} onClick={handleClear} disabled={disabledBtn} />
 
             <ButtonAtom label={'Применить'} onClick={handleSubmit} disabled={disabledBtn} />
           </>
