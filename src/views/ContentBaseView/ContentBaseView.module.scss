@@ -40,19 +40,35 @@
   height: 100%;
   width: 100%;
 
-  .fastFiltersContainer {
-    display: flex;
-    gap: 16px;
+  .filterContainer {
+    padding-bottom: 8px;
+    border-bottom: 1px solid $colorGrey_100;
 
-    .labelChip {
+    .fastFiltersContainer {
       display: flex;
-      gap: 0 4px;
+      gap: 16px;
 
-      .text {
+      .labelChip {
+        display: flex;
+        gap: 0 4px;
+
+        .text {
+        }
+
+        .count {
+
+        }
       }
+    }
 
-      .count {
+    .filtersChipContainer {
+      margin-top: 16px;
+      display: flex;
+      gap: $gap-8 $gap-16;
+      flex-wrap: wrap;
 
+      .label {
+        font-family: $fontBold;
       }
     }
   }

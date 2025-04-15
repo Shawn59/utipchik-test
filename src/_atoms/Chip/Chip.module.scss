@@ -5,41 +5,78 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  min-height: 36px;
+  max-height: 36px;
 
-  :global(.MuiChip-root) {
-    padding: 8px 16px;
-    border-radius: 26px;
-    height: auto;
+  &.middle {
+    min-height: 36px;
+    max-height: 36px;
 
-    :global(.MuiChip-label) {
-      font-family: $fontMedium;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 18px;
-      padding: 0;
+    :global(.MuiChip-root) {
+      padding: $padding-8 $padding-16;
+      border-radius: 26px;
+      height: auto;
+
+      :global(.MuiChip-label) {
+        font-family: $fontMedium;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        padding: 0;
+      }
+
+      :global(.MuiTouchRipple-root) {
+        display: none;
+      }
+
+      :global(.MuiChip-deleteIcon) {
+        margin: 0 0 0 6px;
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        min-height: 20px;
+      }
     }
+  }
 
-    :global(.MuiTouchRipple-root) {
-      display: none;
-    }
+  &.small {
+    :global(.MuiChip-root) {
+      padding: $padding-8;
+      border-radius: 16px;
+      height: auto;
 
-    :global(.MuiChip-deleteIcon) {
-      margin: 0 0 0 6px;
-      width: 24px;
-      height: 24px;
-      min-width: 24px;
-      min-height: 24px;
+      :global(.MuiChip-label) {
+        font-size: 14px;
+        line-height: 16px;
+        padding: 0;
+      }
+
+      :global(.MuiTouchRipple-root) {
+        display: none;
+      }
+
+      :global(.MuiChip-deleteIcon) {
+        margin: 0 0 0 4px;
+        width: 16px;
+        height: 16px;
+        min-width: 16px;
+        min-height: 16px;
+      }
     }
   }
 
 
   &.Primary {
     :global(.MuiChip-root) {
-      background: $colorBlue_600;
-      color: $colorWhite;
+      background: $colorBlue_900;
+
+
+      :global(.MuiChip-label) {
+        color: $colorWhite;
+      }
 
       &:hover {
-        background: $colorRed_200;
+        background: $colorBlue_800;
       }
 
       &:active {
@@ -85,6 +122,37 @@
       &:global(.Mui-disabled) {
         opacity: 0.25;
       }
+    }
+  }
+
+  &.Secondary {
+    :global(.MuiChip-root) {
+      background: $colorDeepGrey_050;
+
+
+      :global(.MuiChip-label) {
+        color: $colorDeepGrey_900;
+      }
+
+      &:hover {
+        background: $colorGrey_100;
+      }
+
+      &:active {
+        box-shadow: none;
+      }
+
+      &.selected {
+        background: $colorBlue_900;
+      }
+
+      &:global(.Mui-disabled) {
+        opacity: 0.25;
+      }
+    }
+
+    svg {
+      fill: $colorDeepGrey_900;
     }
   }
 }
