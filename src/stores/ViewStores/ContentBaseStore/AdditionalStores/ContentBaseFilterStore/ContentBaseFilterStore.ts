@@ -252,6 +252,8 @@ export class ContentBaseFiltersStore {
 
   clearData = () => {
     this.initForm();
+    this.userSelectedOption = null;
+    this.filterChipsList = [];
   };
 
   submit = () => {
