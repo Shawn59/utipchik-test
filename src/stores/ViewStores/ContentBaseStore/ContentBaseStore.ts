@@ -15,7 +15,7 @@ export class ContentBaseStore {
   contentBaseData: any = null;
   mediaSearchList: any = null;
 
-  selectedFastFilterId = 0;
+  selectedFastFilterId = 1;
 
   mediaCardNameKeyword = '';
 
@@ -42,6 +42,7 @@ export class ContentBaseStore {
 
   clearData = () => {
     this.sortData = { key: 'date', value: 'asc' };
+    this.selectedFastFilterId = 1;
   };
 
   setFieldSort = (key: string) => {
