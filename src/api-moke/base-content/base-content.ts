@@ -6,7 +6,7 @@ export const getBaseContentMDAPI = () => {
         fastFilters: [
           {
             id: 1,
-            name: 'Всё',
+            name: 'Все',
             count: 100,
           },
           {

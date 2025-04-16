@@ -1,75 +1,118 @@
 @use 'src/styles/index' as *;
 
-.header {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: center;
-
-  .operationBlock {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: space-between;
-
-    .filtersContainer {
-      display: flex;
-      gap: 0 12px;
-      align-items: center;
-
-      .searchInput {
-        min-width: 300px;
-      }
-
-      .filterBtn {
-        height: 40px;
-        min-width: 40px;
-        padding: 12px 0;
-      }
-    }
-
-    .btnContainer {
-      display: flex;
-      gap: 8px;
-    }
-  }
-}
-
-
 .contentBaseView {
-  height: 100%;
   width: 100%;
 
-  .filterContainer {
-    padding-bottom: 8px;
-    border-bottom: 1px solid $colorGrey_100;
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
 
-    .fastFiltersContainer {
+    .operationBlock {
       display: flex;
-      gap: 16px;
+      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
 
-      .labelChip {
+      .filtersContainer {
         display: flex;
-        gap: 0 4px;
+        gap: 0 12px;
+        align-items: center;
 
-        .text {
+        .searchInput {
+          min-width: 300px;
         }
 
-        .count {
+        .filterBtn {
+          height: 40px;
+          min-width: 40px;
+          padding: 12px 0;
+        }
+      }
 
+      .btnContainer {
+        display: flex;
+        gap: 8px;
+      }
+    }
+  }
+
+  .content {
+    .actionContainer {
+      background: $colorWhite;
+      padding: $padding-16;
+      @extend %shadowForBlock;
+
+      .filterContainer {
+        .fastFiltersContainer {
+          display: flex;
+          gap: 16px;
+          flex-wrap: wrap;
+
+          .nameChip {
+            font-family: $fontBold;
+          }
+        }
+
+        .filtersChipContainer {
+          margin-top: 16px;
+          display: flex;
+          gap: $gap-8 $gap-16;
+          flex-wrap: wrap;
+
+          .label {
+            font-family: $fontBold;
+          }
+        }
+      }
+
+      .sortFieldsContainer {
+        display: flex;
+        gap: $gap-8;
+        flex-wrap: wrap;
+        border-top: 1px solid $colorGrey_100;
+        margin-top: 16px;
+        padding: 8px;
+
+        .sortField {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+
+          &.selected {
+            .title {
+              color: $colorGrey_900;
+            }
+
+            .icon {
+              visibility: visible;
+            }
+          }
+
+          .title {
+            font-family: $fontBold;
+            color: $colorDeepGrey_500;
+          }
+
+          .icon {
+            width: 16px;
+            height: 16px;
+            visibility: hidden;
+            fill: $colorGrey_900;
+            margin-left: 2px;
+
+            &.desc {
+              transform: rotate(180deg);
+            }
+          }
         }
       }
     }
 
-    .filtersChipContainer {
-      margin-top: 16px;
-      display: flex;
-      gap: $gap-8 $gap-16;
-      flex-wrap: wrap;
-
-      .label {
-        font-family: $fontBold;
-      }
+    .mediaContainer {
+      margin-top: 8px;
+      background: $colorWhite;
     }
   }
 }

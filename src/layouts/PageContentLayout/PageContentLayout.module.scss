@@ -3,7 +3,7 @@
 .pageContentLayout {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: $gap-8;
   background: $colorGrey_000;
   flex: 1;
 
@@ -17,9 +17,7 @@
   }
 
   .contentContainer {
-    padding: 32px;
-    background: $colorWhite;
-    border-radius: 16px;
+   // padding: 20px;
     /*height: calc(100dvh - 100px);*/
   }
 }
