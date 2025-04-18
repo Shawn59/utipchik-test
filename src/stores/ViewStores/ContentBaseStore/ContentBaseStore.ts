@@ -34,15 +34,22 @@ export class ContentBaseStore {
 
   sortData: ISortData = { key: 'date', value: 'asc' };
 
+  mediaData: any[] = [];
+
   constructor(rootStore: rootStoreType) {
     this.rootStore = rootStore;
 
     makeAutoObservable(this, { rootStore: false, breadcrumbsList: false, sortFieldsList: false });
   }
 
+  setMediaData = (arr: any[]) => {
+    this.mediaData = [...this.mediaData, ...arr];
+  };
+
   clearData = () => {
     this.sortData = { key: 'date', value: 'asc' };
     this.selectedFastFilterId = 1;
+    this.mediaData = [];
   };
 
   setFieldSort = (key: string) => {

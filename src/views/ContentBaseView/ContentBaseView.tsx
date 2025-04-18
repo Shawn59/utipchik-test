@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import { useStoresHook } from '@hooks';
-import { AutocompleteAtom, ButtonAtom, ChipAtom, IAutocompleteAtomOption } from '@atoms';
+import { AutocompleteAtom, ButtonAtom, ChipAtom, IAutocompleteAtomOption, MediaCardAtom } from '@atoms';
 import { PreloaderFullContentMol } from '@molecules';
 import styles from './ContentBaseView.module.scss';
 import { PageContentLayout } from '@layouts';
@@ -9,6 +9,8 @@ import { BreadcrumbsAtom } from '../../_atoms/Breadcrumbs/Breadcrumbs';
 import { AddOutlined as AddOutlinedIcon, SortOutlined as SortOutlinedIcon } from '@mui/icons-material';
 import { ContentBaseFilter } from './components/ContentBaseFilter/ContentBaseFilter';
 import classNames from 'classnames';
+import { FixedSizeGrid as VirtualGridList } from 'react-window';
+import uuid from 'react-uuid';
 
 export const ContentBaseView = observer(() => {
   const { contentBaseStore, contentBaseFiltersStore } = useStoresHook();
@@ -16,8 +18,29 @@ export const ContentBaseView = observer(() => {
   useEffect(() => {
     contentBaseStore.getBaseContentMD();
 
+    addMedia();
+
     return contentBaseStore.clearData;
   }, []);
+
+  const addMedia = () => {
+    const media: any[] = [];
+
+    for (let i = 0; i < 10; i++) {
+      const id = uuid();
+      const name = `Название_${uuid()}`;
+      const duration = `${i}:00`;
+
+      media.push({
+        id: id,
+        name: name,
+        duration: duration,
+        img: 'https://avatars.mds.yandex.net/get-altay/1633254/2a0000016898775e9a43e55f7abbb2af0037/XXXL',
+      });
+    }
+
+    contentBaseStore.setMediaData(media);
+  };
 
   const setLocation = (_option: IAutocompleteAtomOption | null) => {
     //const id = option.value;
@@ -30,6 +53,12 @@ export const ContentBaseView = observer(() => {
 
     contentBaseStore.setFieldSort(id);
   };
+
+  const Cell = ({ columnIndex, rowIndex, style }) => (
+    <div style={style}>
+      Item {rowIndex},{columnIndex}
+    </div>
+  );
 
   return (
     <div className={styles.contentBaseView}>
@@ -132,7 +161,22 @@ export const ContentBaseView = observer(() => {
                   </div>
                 </div>
 
-                <div className={styles.mediaContainer}></div>
+                <div className={styles.mediaContainer}>
+                  {/* <VirtualGridList
+                    columnCount={1000}
+                    columnWidth={100}
+                    height={150}
+                    rowCount={1000}
+                    rowHeight={35}
+                    width={300}
+                  >
+                    {Cell}
+                  </VirtualGridList>*/}
+
+                  {contentBaseStore.mediaData.map((item) => {
+                    return <MediaCardAtom key={item.id} data={item} />;
+                  })}
+                </div>
               </>
             ) : (
               <PreloaderFullContentMol />
