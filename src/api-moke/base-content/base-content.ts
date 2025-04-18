@@ -39,7 +39,7 @@ export const getBaseContentMDAPI = () => {
       };
 
       resolve(response);
-    }, 1000);
+    }, 300);
   });
 };
 
