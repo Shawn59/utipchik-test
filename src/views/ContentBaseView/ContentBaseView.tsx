@@ -1,12 +1,12 @@
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import { useStoresHook } from '@hooks';
-import { AutocompleteAtom, ButtonAtom, ChipAtom, IAutocompleteAtomOption, MediaCardAtom } from '@atoms';
-import { PreloaderFullContentMol } from '@molecules';
+import { AutocompleteAtom, ButtonAtom, ChipAtom, IAutocompleteAtomOption } from '@atoms';
+import { PreloaderFullContentMol, MediaCardMol } from '@molecules';
 import styles from './ContentBaseView.module.scss';
 import { PageContentLayout } from '@layouts';
 import { BreadcrumbsAtom } from '../../_atoms/Breadcrumbs/Breadcrumbs';
-import { AddOutlined as AddOutlinedIcon, SortOutlined as SortOutlinedIcon } from '@mui/icons-material';
+import { SortOutlined as SortOutlinedIcon } from '@mui/icons-material';
 import { ContentBaseFilter } from './components/ContentBaseFilter/ContentBaseFilter';
 import classNames from 'classnames';
 import { FixedSizeGrid as VirtualGridList } from 'react-window';
@@ -28,14 +28,46 @@ export const ContentBaseView = observer(() => {
 
     for (let i = 0; i < 10; i++) {
       const id = uuid();
-      const name = `Название_${uuid()}`;
-      const duration = `${i}:00`;
+      let name = `Супер пупер видео с текстом Супер пупер видео с текстом Супер пупер видео с текстом Супер пупер видео с текстом`;
+      let duration = `3:00`;
+      let type = 'text';
+      let img = 'https://p2.zoon.ru/2/2/6305ca568ee721d4880de2eb_633294449494c7.34084722.jpg';
+      let size = '30мб.';
+      let hashTags = '#fgdf, #fgdf, #fgd234f, #fgdf, #fg32fddf, #fgdsf, #SDSAf, #234';
+      let screens = '1920x800, 1200x400, 1200x400, 1200x400, 1200x400, 1200x400, 1200x400';
+      let change = 'Васильев Д.К • 01.12.2025 10:30';
+      let moderation = 'Васильев Д.К • Главный редактор • 14.12.2025 02:30';
+      let moderationStatus = 'success';
+
+      if (i % 3 === 0) {
+        type = 'online';
+        name = 'Видео с онлайн типом';
+        duration = '01:34';
+        img = 'https://avatars.mds.yandex.net/get-altay/1633254/2a0000016898775e9a43e55f7abbb2af0037/XXXL';
+        size = '2мб.';
+        moderationStatus = 'cancel'
+      } else if (i % 2 === 0) {
+        type = 'offline';
+        name = 'Видео с офлайн типом';
+        duration = '00:22';
+        size = '100мб.';
+        moderationStatus = 'return'
+        img =
+          'https://yandex-images.clstorage.net/fWe5y6131/9e62cd33/WAXpAFoNr8olqqWnniW8B7yA6_i8hVhHFd3oH5JrPqOFq0s6DpN3KXBUQiWd5cDVnGLOcaUxqGe43XyAlmgYU5wxbWDbfMs75Lu1wk_gfEeOR_h6vkbq5bOvetw36j-GIOuK2t72Bt1kMpTkuTFQFjxxbkHCR-8ingjZVdOOjwT79bhlb_lNObVIp5ZNM6yEv6VbCY7XizXxzdscFqm_0OO5S6hd5UCMFQAX4erB8LYNUX9jo2ZPwz2J-4bzvI_VSxeoV5xb7JgmGnUWfHP-Ju2E6krNxejkAC1ajvRZDOHx2Ooof6fg7iTz51JIEwCEbWFcs3AFXZJf-po1000s95g2mRc_eX0L1vim9q0gbXd81Fp4DoQo5sOuC363OY6iQYoZa7wk0C5mMAVRu5GxFN-B7sHC5E2SzXipF5Kt3bdpdZt27OvcyzYrFpe9Qx6lHPc5Oh8neKYgTenfhqnMMUOJCEnc9PBMFHGnsJhik8dvIV5RMofdIk87e3cj3v9kWwYrlp65rNkUGueUf5F9l2y1KhuPF0iXgy1YvlYLDjJQOPh4LDXALNZz1jA78mA1XHFto_JUvcBsagkUY10MVIgVqmTOG824dSv2Fl-DvMR85lp5jkZ7VaFNSRxUK8wC0OlIaD6V0m5WIeQTuwNApu4zrHFgZn1yTbjpVbON_kULpnllrbhvyWfIhSbPMD2EvoV6eN53qgRRjdlsxGt_sYH4OWm-N3CMZ_BFsPsyYlV-YH6zE3QNMk0p69dzv120-BfpVQ7pfEsmO9fEnDO9VR1m-Hmu9Ei24387DAZ7HqOzmzkbv_ewr8dx9JHrgVL3PmIOctC33UBv2Tp0ox0vJRhly1Veqa24FfrFx93y3LS-1FvIjXSYRAG9inxV-7_BQcrpSF2mAA71InYAKoATRz5D3bGyZHwyzhtaFQDcDOVId_mkrMj_aAYbxvbeQb1Gn-UKiE7FalcTzlp_pHmtw';
+      }
 
       media.push({
         id: id,
         name: name,
         duration: duration,
-        img: 'https://avatars.mds.yandex.net/get-altay/1633254/2a0000016898775e9a43e55f7abbb2af0037/XXXL',
+        img: img,
+        type: type,
+        size: size,
+        hashTags,
+        screens,
+        change,
+        moderation,
+        moderationStatus
       });
     }
 
@@ -85,11 +117,7 @@ export const ContentBaseView = observer(() => {
               </div>
 
               <div className={styles.btnContainer}>
-                <ButtonAtom
-                  label={'Добавить'}
-                  theme={'Success'}
-                  endIcon={(<AddOutlinedIcon />) as React.ReactElement}
-                />
+                <ButtonAtom label={'Добавить'} theme={'Success'} />
               </div>
             </div>
           </div>
@@ -174,7 +202,7 @@ export const ContentBaseView = observer(() => {
                   </VirtualGridList>*/}
 
                   {contentBaseStore.mediaData.map((item) => {
-                    return <MediaCardAtom key={item.id} data={item} />;
+                    return <MediaCardMol key={item.id} data={item} />;
                   })}
                 </div>
               </>
