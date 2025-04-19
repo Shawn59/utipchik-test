@@ -1,4 +1,4 @@
-@use "src/styles/index" as *;
+@use "../../styles/index" as *;
 
 .mediaCardAtom {
   display: flex;
@@ -19,6 +19,35 @@
       cursor: pointer;
     }
 
+    .playIcon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 72px;
+      fill: $colorWhite;
+      opacity: 0.8;
+      cursor: pointer;
+    }
+
+    .editBtn {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-radius: 4px;
+      padding: 4px;
+      top: 12px;
+      right: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $colorWhite;
+
+      svg {
+        fill: $colorDarkTurquoise_900;
+      }
+    }
+
     .videoDuration {
       background: $time-bg;
       color: white;
@@ -28,6 +57,7 @@
       padding: 0 8px;
       border-radius: 8px;
       font-size: 12px;
+      cursor: pointer;
     }
 
     .videoSize {
@@ -39,6 +69,7 @@
       padding: 0 8px;
       border-radius: 8px;
       font-size: 12px;
+      cursor: pointer;
     }
 
     .videoType {
@@ -52,6 +83,7 @@
       letter-spacing: 0.6px;
       font-family: $fontBold;
       @extend %fontSizeMiddle;
+      cursor: pointer;
 
       &.online {
        background: $colorBlue_700;
@@ -90,11 +122,19 @@
         background: $colorOrange_500;
       }
 
-      .moderationIcon {
-        fill: $colorWhite;
-        width: 22px;
-        height: 22px;
-        cursor: pointer;
+      .moderationStatusBlock {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .moderationIcon {
+          fill: $colorWhite;
+          width: 22px;
+          height: 22px;
+          cursor: pointer;
+        }
       }
     }
   }

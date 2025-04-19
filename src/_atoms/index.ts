@@ -9,4 +9,4 @@ export * from './Switch/Switch';
 export * from './MultiSelectChip/MultiSelectChip';
 export * from './RadioButtonsGroup/RadioButtonsGroup';
 export * from './DatePickerRange/DatePickerRange';
-export * from './MediaCard/MediaCard';
+export * from './Tooltip/Tooltip';

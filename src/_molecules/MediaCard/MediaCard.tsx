@@ -5,11 +5,13 @@ import {
   CancelOutlined as CancelOutlinedIcon,
   UndoOutlined as UndoOutlinedIcon,
   CheckCircleOutlined as CheckCircleOutlinedIcon,
+  SmartDisplayOutlined as SmartDisplayOutlinedIcon,
+  EditSharp as EditSharpIcon
 } from '@mui/icons-material';
-import { Tooltip } from '@mui/material';
-import { TooltipAtom } from '../Tooltip/Tooltip';
+import { TooltipAtom } from '@atoms';
+import { IconButton } from '@mui/material';
 
-interface IMediaCardAtom {
+interface IMediaCardMol {
   data: {
     id: string;
     name: string;
@@ -25,13 +27,19 @@ interface IMediaCardAtom {
   };
 }
 
-export const MediaCardAtom: FC<IMediaCardAtom> = (props) => {
+export const MediaCardMol: FC<IMediaCardMol> = (props) => {
   const { data } = props;
 
   return (
     <div className={styles.mediaCardAtom}>
       <div className={styles.imgContainer}>
         <img src={data.img} className={styles.img} />
+
+        <SmartDisplayOutlinedIcon className={styles.playIcon}/>
+
+        <IconButton className={styles.editBtn}>
+          <EditSharpIcon/>
+        </IconButton>
 
         {data.duration && <div className={styles.videoDuration}>{data.duration}</div>}
 
@@ -41,18 +49,24 @@ export const MediaCardAtom: FC<IMediaCardAtom> = (props) => {
 
         <div className={classNames(styles.moderationContainer, styles[data.moderationStatus])}>
           {data.moderationStatus === 'cancel' && (
-            <TooltipAtom title="Статус модерации: - отказано" placement="top" arrow>
-              <CancelOutlinedIcon className={styles.moderationIcon} />
+            <TooltipAtom title="Статус модерации: - отказано" placement="top" isArrow>
+              <div className={styles.moderationStatusBlock}>
+                <CancelOutlinedIcon className={styles.moderationIcon} />
+              </div>
             </TooltipAtom>
           )}
           {data.moderationStatus === 'success' && (
-            <TooltipAtom title="Статус модерации: - одобрено" placement="top" arrow>
-              <CheckCircleOutlinedIcon className={styles.moderationIcon} />
+            <TooltipAtom title="Статус модерации: - одобрено" placement="top" isArrow>
+              <div className={styles.moderationStatusBlock}>
+                <CheckCircleOutlinedIcon className={styles.moderationIcon} />
+              </div>
             </TooltipAtom>
           )}
           {data.moderationStatus === 'return' && (
-            <TooltipAtom title="Статус модерации: - возвращено на доработку " placement="top" arrow>
-              <UndoOutlinedIcon className={styles.moderationIcon} />
+            <TooltipAtom title="Статус модерации: - возвращено на доработку " placement="top" isArrow>
+              <div className={styles.moderationStatusBlock}>
+                <UndoOutlinedIcon className={styles.moderationIcon} />
+              </div>
             </TooltipAtom>
           )}
         </div>
